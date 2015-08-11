@@ -1,0 +1,27 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <ul class="nav navbar-nav navbar-left">
+      <h4>TenGigg</h4>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+        aria-haspopup="true" aria-expanded="false"><%= current_user.username %>
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Sign Out", session_url, method: :delete %></li>
+          <!-- <li><%#= link_to "Profile", user_url %></li> -->
+        </ul>
+      <% else %>
+        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+        aria-haspopup="true" aria-expanded="false">Log In
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><%= link_to "Log In", new_session_url %></li>
+            <li><%= link_to "Sign Up", new_user_url %></li>
+        </ul>
+      <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
