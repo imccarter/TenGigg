@@ -76,7 +76,6 @@ filtered by search criteria.
 ### Bonus Features (TBD)
 - [ ] View other account profiles
 - [ ] Infinite scroll
-- [ ] Activity history (e.g. likes, reblogs, taggings)
 - [ ] Video posts
 - [ ] Multiple sessions/session management
 - [ ] Toggleable thumb-view or main-view format for search results
@@ -88,4 +87,3 @@ filtered by search criteria.
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
-

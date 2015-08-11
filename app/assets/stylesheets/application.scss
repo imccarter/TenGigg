@@ -15,3 +15,51 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+* {
+  font-family: 'Verdana';
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul.posts {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.form-container {
+  text-align: center;
+}
+
+.auth-form {
+  display: inline-block;
+  text-align: center;
+  width: 25%;
+  height: 200px;
+  border: 1px solid gray;
+  border-radius: 5%;
+  margin: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.post-index .posts {
+  display: block;
+  width: 60%;
+  margin: 20px;
+  border: 1px solid gray;
+
+}
+
+.post-index-item {
+  border: 1px solid gray;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.post-popularity {
+  font-size: 10px;
+}

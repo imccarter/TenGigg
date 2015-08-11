@@ -1,6 +1,7 @@
 TenGigg.Views.PostsIndex = Backbone.CompositeView.extend({
 
   template: JST['posts/index'],
+  className: 'post-index',
 
   initialize: function () {
     this.collection.each(this.addPostView.bind(this));
