@@ -24,6 +24,14 @@ ul {
   list-style-type: none;
 }
 
+// Navbar
+
+nav {
+  color: black;
+
+}
+
+
 ul.posts {
   padding-left: 8px;
   padding-right: 8px;
@@ -50,7 +58,6 @@ ul.posts {
   width: 60%;
   margin: 20px;
   border: 1px solid gray;
-
 }
 
 .post-index-item {
