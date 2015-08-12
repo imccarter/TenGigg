@@ -1,0 +1,27 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-left">
+      <a class="navbar-brand" href="#/">TenGigg</a>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if (window.username !== "Account") { %>
+        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+        aria-haspopup="true" aria-expanded="false"><%= window.username %>
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="javascript:void(0)" class="log-out">Sign Out</a></li>
+          <!-- <li><a href="#" class="profile">Profile</a></li> -->
+        </ul>
+      <% } else { %>
+        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+        aria-haspopup="true" aria-expanded="false"><%= window.username %>
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/session/new" class="sign-in">Log In</a></li>
+          <li><a href="/users/new" class="sign-up">Sign Up</a></li>
+        </ul>
+        <% } %>
+      </li>
+    </ul>
+  </div>
+</nav>

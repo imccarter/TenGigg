@@ -5,10 +5,17 @@ window.TenGigg = {
   Routers: {},
   initialize: function() {
     // alert('Hello from Backbone!');
-    new TenGigg.Routers.Router({
+    var posts = new TenGigg.Collections.Posts()
+    var router = new TenGigg.Routers.Router({
       $rootEl: $('#root'),
-      posts: new TenGigg.Collections.Posts()
+      posts: posts
     });
+    var navbar = new TenGigg.Views.NavBarView({
+      router: router,
+      $navEl: $('#navbar'),
+      posts: posts
+    });
+    navbar.render();
     Backbone.history.start();
   }
 };
