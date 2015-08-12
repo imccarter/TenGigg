@@ -5,7 +5,7 @@ window.TenGigg = {
   Routers: {},
   initialize: function() {
     // alert('Hello from Backbone!');
-    var posts = new TenGigg.Collections.Posts()
+    var posts = new TenGigg.Collections.Posts();
     var router = new TenGigg.Routers.Router({
       $rootEl: $('#root'),
       posts: posts

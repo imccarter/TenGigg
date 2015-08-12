@@ -2,7 +2,7 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
   template: JST['nav_bar'],
 
   events: {
-    'click .log-out': 'logOut'
+    'click .sign-out': 'logOut'
   },
 
   initialize: function (options) {
@@ -21,15 +21,13 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
 
   //FIX ME:
   logOut: function() {
+    window.username = "Account";
     $.ajax({
       url: '/session',
       type: 'DELETE',
       success: function() {
-        Backbone.history.navigate("", { trigger: true });
-        window.location = "/";
-        window.username = "Account";
         this.render();
-      }.bind(this),
+      }.bind(this)
     });
   },
 

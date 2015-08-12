@@ -2,6 +2,9 @@ TenGigg.Collections.Posts = Backbone.Collection.extend({
   model: TenGigg.Models.Post,
   url: '/api/posts',
 
+  initialize: function (models) {
+  },
+
   comparator: function (post) {
     return (post.get('popularity') * -1);
   },

@@ -15,6 +15,6 @@ class SessionsController < ApplicationController
 
 	def destroy
 		log_out
-		render json: "success"
+		render json: ActiveSupport::JSON.encode({msg: 'success'})
 	end
 end
