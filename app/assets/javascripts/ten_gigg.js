@@ -13,7 +13,7 @@ window.TenGigg = {
     var navbar = new TenGigg.Views.NavBarView({
       router: router,
       $navEl: $('#navbar'),
-      posts: posts
+      collection: posts
     });
     navbar.render();
     Backbone.history.start();

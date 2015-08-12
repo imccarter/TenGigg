@@ -5,8 +5,15 @@ TenGigg.Collections.Posts = Backbone.Collection.extend({
   initialize: function (models) {
   },
 
-  comparator: function (post) {
-    return (post.get('popularity') * -1);
+  // comparator: function (post) {
+  //   return (post.get('popularity') * -1);
+  // },
+
+  reOrder: function (attr) {
+    console.log("Reordering?");
+    var models = this.sortBy(attr).reverse();
+    this.set([]);
+    this.set(models);
   },
 
   getOrFetch: function (id) {

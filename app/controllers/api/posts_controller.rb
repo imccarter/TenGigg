@@ -1,6 +1,6 @@
 class Api::PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.order(popularity: :desc)
     render json: @posts
   end
 
@@ -9,6 +9,11 @@ class Api::PostsController < ApplicationController
     render json: @post
   end
 
+  def create
+    @post = Post.new(post_params)
+  end
+
+  private
   def post_params
     params.require(:post).permit(:title, :author_id, :popularity)
   end

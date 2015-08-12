@@ -2,13 +2,22 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
   template: JST['nav_bar'],
 
   events: {
-    'click .sign-out': 'logOut'
+    'click .sign-out': 'logOut',
+    'click .recent': 'recentHandler',
+    'click .navbar-brand': 'indexHandler'
+  },
+
+  indexHandler: function () {
+    this.collection.reOrder('popularity');
+  },
+
+  recentHandler: function () {
+    this.collection.reOrder('created_at');
   },
 
   initialize: function (options) {
     this.router = options.router;
     this.$el = options.$navEl;
-    this.collection = options.posts;
     this.listenTo(this.router, 'route', this.handleRoute);
   },
 
@@ -18,8 +27,6 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     return this;
   },
 
-
-  //FIX ME:
   logOut: function() {
     window.username = "Account";
     $.ajax({
