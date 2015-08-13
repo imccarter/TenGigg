@@ -13,4 +13,6 @@
 class Post < ActiveRecord::Base
   validates :author_id, :title, presence: true
   belongs_to :user, foreign_key: :author_id, class_name: :User
+  has_many :post_categories, inverse_of: :post, dependent: :destroy
+  has_many :categories, through: :post_categories, source: :category
 end

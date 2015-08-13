@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
 	namespace :api, default: :json do
 		resources :posts, except: [:new, :edit]
+		resources :categories, only: [:create, :index]
 	end
 	resources :users
 	resource :session, only: [:create, :new, :destroy]

@@ -1,15 +1,30 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <ul class="nav navbar-nav navbar-left">
+      <!-- Main Logo/Index -->
       <li class='mainIndex'><a class="navbar-brand" href="#/">TenGigg</a></li>
+      <!-- Sort by Recent -->
       <li class='recentIndex'><a class='recent' href="#/">Recent</a></li>
+      <!-- Categories Dropdown -->
+      <li>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+        aria-haspopup="true" aria-expanded="false">Categories
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li>
+
+          <!-- CATEGORY NAMES HERE -->
+
+          </li>
+        </ul>
+      </li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
       <% if (window.username !== "Account") { %>
-        <!-- Submit Button (placeholder rails view to submit new post, change to modal) -->
+
+        <!-- Submit Button (change to modal) -->
         <li>
-          <a href="/posts/new" class='new-post'>Submit</a>
           <!-- <button type="button" class="btn btn-primary">Submit</button> -->
         </li>
 
