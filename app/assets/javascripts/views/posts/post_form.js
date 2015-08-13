@@ -1,8 +1,13 @@
 TenGigg.Views.PostForm = Backbone.View.extend({
   template: JST['posts/post_form'],
 
-  event: {
-    'click .upload-button': 'upload'
+  initialize: function () {
+    this.image = new TenGigg.Models.Image();
+  },
+
+  events: {
+    'click .upload-button': 'upload',
+    'submit form': 'savePost'
   },
 
   render: function () {
@@ -13,12 +18,38 @@ TenGigg.Views.PostForm = Backbone.View.extend({
   },
 
   upload: function (e) {
-    // var image = new TenGigg.Models.Image();
-    // e.preventDefault();
-    // cloudinary.openUploadWidget(CLOUDINARY_OPTION, function(error, result) {
-    //   var data = result[0]
-    //   image.set({ url: data.url})
-//
-    // })
-  }
+    e.preventDefault();
+    var post = this.model;
+    cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, function(error, result) {
+      var data = result[0];
+      this.image.set({
+        url: data.url,
+        thumbnail_url: data.thumbnail_url,
+        width: data.width,
+        height: data.height
+      });
+      this.image.save({}, {
+        success: function (image) {
+          post.set({image_id: image.get('id')});
+          $('.thumb-container').append(
+            "<img src='" + image.escape('thumbnail_url') + "' alt='' />"
+          );
+        }
+      });
+    }.bind(this));
+  },
+
+  savePost: function(e) {
+    e.preventDefault();
+    var data = $(e.currentTarget).serializeJSON().post;
+    var image = this.image;
+    this.model.set({ image_id: image.get('id') });
+    this.model.set(data);
+    this.model.save({}, {
+      success: function () {
+        this.collection.add(this.model);
+        window.location = "/";
+      }.bind(this),
+    });
+  },
 });

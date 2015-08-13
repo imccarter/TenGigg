@@ -8,6 +8,7 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  image_id        :integer
 #
 
 class User < ActiveRecord::Base
@@ -20,6 +21,8 @@ class User < ActiveRecord::Base
 	after_initialize :ensure_session_token
 
 	has_many :posts, foreign_key: :author_id
+
+  belongs_to :image, foreign_key: :image_id, class_name: :Image
 
 	def self.generate_token
 		SecureRandom.urlsafe_base64(16)

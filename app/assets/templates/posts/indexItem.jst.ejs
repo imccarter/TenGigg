@@ -1,2 +1,6 @@
 <h4 class='post-title'><%= post.escape("title") %></h4>
+<% if (post.image) { %>
+  <img
+  src="<%= post.image().resizedUrl() %>" alt="" />
+<% } %>
 <div class='post-popularity'>Popularity: <%= post.escape("popularity") %></div>

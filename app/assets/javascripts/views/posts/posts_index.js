@@ -4,7 +4,7 @@ TenGigg.Views.PostsIndex = Backbone.CompositeView.extend({
   className: 'post-index',
 
   events: {
-    'submit form': 'addPost'
+    // 'submit form': 'addPost'
   },
 
   initialize: function () {
@@ -26,28 +26,29 @@ TenGigg.Views.PostsIndex = Backbone.CompositeView.extend({
     this.addSubview('.posts', view);
   },
 
-  addPost: function (e) {
-    e.preventDefault();
-    // debugger;
-    var $target = $(e.currentTarget);
-    var data = $target.serializeJSON();
-    var model = new TenGigg.Models.Post();
-    model.set(data);
-    model.save({}, {
-      success: function () {
-        this.collection.add(model);
-        window.location = "/";
-        // Backbone.history.navigate("#/", { trigger: true });
-      }.bind(this)
-    });
-  },
+  // addPost: function (e) {
+  //   e.preventDefault();
+  //   debugger;
+  //   var $target = $(e.currentTarget);
+  //   var data = $target.serializeJSON();
+  //   var model = new TenGigg.Models.Post();
+  //   model.set(data);
+  //   model.save({}, {
+  //     success: function () {
+  //       this.collection.add(model);
+  //       window.location = "/";
+  //       // Backbone.history.navigate("#/", { trigger: true });
+  //     }.bind(this)
+  //   });
+  // },
 
   addPostForm: function () {
-    // var post = new TenGigg.Models.Post();
-    var formView = new TenGigg.Views.PostForm({});
+    var post = new TenGigg.Models.Post();
+    var formView = new TenGigg.Views.PostForm({
+      collection: this.collection,
+      model: post
+    });
     this.addSubview('.post-form', formView);
-    // make the form view, passing in an empty model
-    // addSubview(formView);
   },
 
   addPostViews: function () {
