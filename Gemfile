@@ -21,6 +21,9 @@ gem 'backbone-on-rails'
 gem 'bootstrap-sass'
 gem 'serialize_json-rails'
 
+gem 'cloudinary'
+gem 'figaro'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
