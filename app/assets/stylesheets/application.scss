@@ -16,7 +16,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-* {
+body {
   font-family: 'Verdana';
 }
 
@@ -24,13 +24,18 @@ ul {
   list-style-type: none;
 }
 
-// Navbar
-
-nav {
-  color: black;
-
+.navbar-inverse .navbar-nav > li > a {
+  color: white;
 }
 
+.navbar-inverse .navbar-nav > li {
+  border-right: 1px solid #625D5D;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:not(.navbar-brand):focus {
+	background-color: #625D5D;
+}
 
 ul.posts {
   padding-left: 8px;
