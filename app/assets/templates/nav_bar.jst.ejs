@@ -11,7 +11,7 @@
         aria-haspopup="true" aria-expanded="false">Categories
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <% categories.each(function (category) { %>
+          <% TenGigg.categories.each(function (category) { %>
             <li><a href="#<%= category.escape('name') %>/posts">
             <%= category.escape('name') %></a></li>
           <% }); %>

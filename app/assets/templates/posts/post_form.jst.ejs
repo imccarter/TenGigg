@@ -9,7 +9,14 @@
     <h5>Image:</h5>
   </div>
 
-  <button class='upload-button'>Upload Image</button>
+  <button class='upload-button'>Upload Image</button><br></br>
+  <ul class="category-select"><h4>Categories:</h4>
+    <% TenGigg.categories.each(function (category) { %>
+      <li><input type="checkbox" class="category"
+        value="<%= category.escape('name') %>">
+        <%= category.escape('name') %></li>
+    <% }); %>
+  </ul>
 
   <input type="submit" value="Submit Post!">
 

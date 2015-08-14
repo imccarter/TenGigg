@@ -14,6 +14,7 @@ TenGigg.Views.PostForm = Backbone.View.extend({
     var content = this.template({ post: this.model });
     this.$el.html(content);
     this.delegateEvents();
+    this.listenTo(TenGigg.categories, 'sync', this.render);
     return this;
   },
 
@@ -31,6 +32,7 @@ TenGigg.Views.PostForm = Backbone.View.extend({
       this.image.save({}, {
         success: function (image) {
           post.set({image_id: image.get('id')});
+          // POSSIBLY REFACTOR INSERTING THE THUMB PIC???
           $('.thumb-container').append(
             "<img src='" + image.escape('thumbnail_url') + "' alt='' />"
           );
@@ -43,6 +45,10 @@ TenGigg.Views.PostForm = Backbone.View.extend({
     e.preventDefault();
     var data = $(e.currentTarget).serializeJSON().post;
     var image = this.image;
+    var $categories = this.$('.category:checked');
+    
+    // How to add selected category ids to join table with model id?
+    debugger;
     this.model.set({ image_id: image.get('id') });
     this.model.set(data);
     this.model.save({}, {
