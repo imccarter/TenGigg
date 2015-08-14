@@ -3,6 +3,8 @@ TenGigg.Views.PostShow = Backbone.CompositeView.extend({
 
   initialize: function () {
     // this.collection = this.model.comments();
+    debugger;
+    this.listenTo(this.model, 'sync', this.render);
   },
 
   render: function () {

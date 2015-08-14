@@ -20,7 +20,9 @@ class User < ActiveRecord::Base
 
 	after_initialize :ensure_session_token
 
-	has_many :posts, foreign_key: :author_id
+	has_many :posts, foreign_key: :author_id, class_name: :Post
+
+	has_many :comments, as: :commentable
 
   belongs_to :image, foreign_key: :image_id, class_name: :Image
 

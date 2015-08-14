@@ -19,4 +19,6 @@ class Post < ActiveRecord::Base
 
   has_many :post_categories, inverse_of: :post, dependent: :destroy
   has_many :categories, through: :post_categories, source: :category
+  
+  has_many :comments, as: :commentable
 end
