@@ -11,7 +11,10 @@
         aria-haspopup="true" aria-expanded="false">Categories
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <!-- Categories here -->
+          <% categories.each(function (category) { %>
+            <li><a href="#<%= category.escape('name') %>/posts">
+            <%= category.escape('name') %></a></li>
+          <% }); %>
         </ul>
       </li>
     </ul>

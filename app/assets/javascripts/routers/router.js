@@ -24,7 +24,7 @@ TenGigg.Routers.Router = Backbone.Router.extend({
   },
 
   category: function (category) {
-    
+
   },
 
   _swapView: function (view) {

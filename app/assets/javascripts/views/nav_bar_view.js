@@ -24,14 +24,8 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
   },
 
   render: function () {
-    var content = this.template();
+    var content = this.template({categories: this.categories});
     this.$el.html(content);
-    this.categories.each(function (category) {
-      $('.categories > ul').append(
-        "<li><a href=/" + category.escape('name') + "/posts>" +
-        category.escape('name') + "</a></li>"
-      );
-    });
     return this;
   },
 
