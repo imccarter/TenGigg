@@ -3,7 +3,7 @@ class Api::PostsController < ApplicationController
 
   def index
     if params[:category]
-      category = Category.find_by(name: params[:category])
+      category = Category.includes(:posts).find_by(name: params[:category])
       if category
         @posts = category.posts
         render :index
