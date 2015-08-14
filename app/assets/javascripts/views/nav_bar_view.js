@@ -7,6 +7,14 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     'click .navbar-brand': 'indexHandler'
   },
 
+  initialize: function (options) {
+    this.router = options.router;
+    this.$el = options.$navEl;
+    this.categories = options.categories;
+    this.listenTo(this.router, 'route', this.handleRoute);
+    this.listenTo(this.categories, 'sync', this.render);
+  },
+
   indexHandler: function () {
     this.collection.reOrder('popularity');
   },
@@ -15,15 +23,15 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     this.collection.reOrder('created_at');
   },
 
-  initialize: function (options) {
-    this.router = options.router;
-    this.$el = options.$navEl;
-    this.listenTo(this.router, 'route', this.handleRoute);
-  },
-
   render: function () {
     var content = this.template();
     this.$el.html(content);
+    this.categories.each(function (category) {
+      $('.categories > ul').append(
+        "<li><a href=/" + category.escape('name') + "/posts>" +
+        category.escape('name') + "</a></li>"
+      );
+    });
     return this;
   },
 

@@ -1,9 +1,5 @@
 class Api::CategoriesController < ApplicationController
 
-  def create
-    @category = Category.new(category_params)
-  end
-
   def index
     @categories = Category.all
     render json: @categories

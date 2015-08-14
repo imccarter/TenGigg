@@ -1,7 +1,19 @@
 class Api::PostsController < ApplicationController
+
+
   def index
-    @posts = Post.order(popularity: :desc)
-    render :index
+    if params[:category]
+      category = Category.find_by(name: params[:category])
+      if category
+        @posts = category.posts
+        render :index
+      else
+        render json: ["category does not exist"], status: 422
+      end
+    else
+      @posts = Post.order(popularity: :desc)
+      render :index
+    end
     # render json: @posts
   end
 
