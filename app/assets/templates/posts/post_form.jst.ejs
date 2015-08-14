@@ -1,23 +1,29 @@
-<h4>Make a Post</h4>
+<div class="m-background"></div>
+<div class="m-content">
+  <h4>Submit a Post</h4><br>
+  <form class="post-form">
+    <input type="text" name="title" placeholder="Title">
+    <br><br>
+    <input type="text" name="popularity" placeholder="Popularity"> <!-- Change to URL... -->
+    <br><br>
 
-<form class="post-form">
-  <input type="text" name="post[title]" placeholder="Title"><br><br>
-  <input type="text" name="post[popularity]" placeholder="Popularity"> <!-- Change to URL... -->
-  <br><br>
+    <div class="thumb-container">
+      <h5>Image:</h5>
+    </div><br>
 
-  <div class="thumb-container">
-    <h5>Image:</h5>
-  </div>
+    <button class='upload-button'>Upload Image</button><br></br>
+    <h4>Categories:</h4>
+    <ul class="category-select">
+      <% TenGigg.categories.each(function (category) { %>
+        <li><input type="checkbox" name="category_ids[]" class="category"
+          value="<%= category.escape('id') %>">
+          <%= category.escape('name') %></li>
+      <% }); %>
+    </ul>
+    <br>
 
-  <button class='upload-button'>Upload Image</button><br></br>
-  <ul class="category-select"><h4>Categories:</h4>
-    <% TenGigg.categories.each(function (category) { %>
-      <li><input type="checkbox" class="category"
-        value="<%= category.escape('name') %>">
-        <%= category.escape('name') %></li>
-    <% }); %>
-  </ul>
-
-  <input type="submit" value="Submit Post!">
-
-</form>
+    <input type="submit" value="Submit Post!">
+    <button id="close">Cancel</button>
+    <br>
+  </form>
+</div>

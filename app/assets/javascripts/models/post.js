@@ -27,6 +27,10 @@ TenGigg.Models.Post = Backbone.Model.extend({
       this.categories().set(payload.categories);
       delete payload.categories;
     }
+    // 
+    // if (payload.user) {
+    //   this.author().set(payload.user.get('username'));
+    // }
 
     return payload;
   }

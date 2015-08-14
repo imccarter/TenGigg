@@ -1,1 +1,12 @@
-<h2><%= post.escape('title') %></h2>
+<div class="post-show">
+
+  <h2><%= post.escape('title') %></h2>
+  <h3>Posted by: <%= post.user %></h3>
+
+
+  <% if (post.image) { %>
+    <img
+    src="<%= post.image().resizedUrl() %>" alt="" />
+  <% } %>
+  <div class='post-popularity'>Popularity: <%= post.escape("popularity") %></div>
+</div>

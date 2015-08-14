@@ -3,11 +3,14 @@ TenGigg.Views.PostForm = Backbone.View.extend({
 
   initialize: function () {
     this.image = new TenGigg.Models.Image();
+    $(document).on('keyup', this.handleKey.bind(this));
   },
 
   events: {
     'click .upload-button': 'upload',
-    'submit form': 'savePost'
+    'submit form': 'savePost',
+    'click #close': 'closeForm',
+    'click .m-background': 'closeForm'
   },
 
   render: function () {
@@ -16,6 +19,17 @@ TenGigg.Views.PostForm = Backbone.View.extend({
     this.delegateEvents();
     this.listenTo(TenGigg.categories, 'sync', this.render);
     return this;
+  },
+
+  handleKey: function (e) {
+    if (e.keyCode === 27) {
+      this.remove();
+    }
+  },
+
+  closeForm: function (e) {
+    e.preventDefault();
+    this.remove();
   },
 
   upload: function (e) {
@@ -43,18 +57,25 @@ TenGigg.Views.PostForm = Backbone.View.extend({
 
   savePost: function(e) {
     e.preventDefault();
-    var data = $(e.currentTarget).serializeJSON().post;
+    var data = $(e.currentTarget).serializeJSON();
     var image = this.image;
-    var $categories = this.$('.category:checked');
-    
-    // How to add selected category ids to join table with model id?
+
     debugger;
     this.model.set({ image_id: image.get('id') });
     this.model.set(data);
+
+    // var categories = [];
+    // for (var i = 0; i < data.category_ids.length; i++) {
+    //   categories.push(TenGigg.categories.models[data.category_ids[i] - 1]);
+    // }
+
+    // this.model.categories().set(categories);
     this.model.save({}, {
       success: function () {
         this.collection.add(this.model);
+        // Backbone.history.navigate("#", { trigger: true });
         window.location = "/";
+        this.remove();
       }.bind(this),
     });
   },

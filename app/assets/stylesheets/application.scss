@@ -75,3 +75,49 @@ ul.posts {
 .post-popularity {
   font-size: 10px;
 }
+
+ul.category-select {
+  -moz-column-count: 4;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 20px;
+  column-count: 2;
+  column-gap: 20px;
+}
+
+//
+// ul.category-select li {
+//   width: 125px;
+//   display: inline-block;
+//   float: left;
+// }
+//
+// ul.category-select li:nth-of-type(n+4) {
+//   width: 125px;
+//   display: inline-block;
+//   float: right;
+//
+// }
+
+.m-background {
+  background-color: rgba(50, 50, 50, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.m-content {
+  position: absolute;
+  overflow-y: auto;
+  background-color: white;
+  border-radius: 5px;
+  padding: 2pc;
+  border: 1px solid;
+  z-index: 99;
+  top: 25%;
+  left: 25%;
+}

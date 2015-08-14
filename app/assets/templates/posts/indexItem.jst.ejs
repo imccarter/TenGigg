@@ -1,4 +1,4 @@
-<h4 class='post-title'><%= post.escape("title") %></h4>
+<h4 class='post-title'><a href="#posts/<%= post.escape("id") %>"><%= post.escape('title') %></a></h4>
 <% if (post.image) { %>
   <img
   src="<%= post.image().resizedUrl() %>" alt="" />

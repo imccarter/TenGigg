@@ -14,19 +14,22 @@ class Api::PostsController < ApplicationController
       @posts = Post.order(popularity: :desc)
       render :index
     end
-    # render json: @posts
   end
 
   def show
     @post = Post.find(params[:id])
-    # render json: @post
     render :show
   end
 
   def create
     @post = Post.new(post_params)
     @post.author_id = current_user.id
+    @post.category_ids = params[:category_ids]
+
     if @post.save
+      # post_params.category_ids.each do |id|
+      #   PostCategory.create!(post_id: @post.id, category_id: id)
+      # end
       render json: @post
     else
       render json: @post.errors.full_messages, status: :unprocessable_entity
@@ -35,6 +38,6 @@ class Api::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :popularity, :image_id)
+    params.require(:post).permit(:title, :popularity, :image_id, :category_ids => [])
   end
 end

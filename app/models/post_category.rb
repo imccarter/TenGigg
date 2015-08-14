@@ -10,6 +10,7 @@
 #
 
 class PostCategory < ActiveRecord::Base
+  validates :post, :category_id, presence: true
   belongs_to :post, inverse_of: :post_categories
   belongs_to :category, inverse_of: :post_categories
 end

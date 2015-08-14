@@ -1,5 +1,5 @@
 TenGigg.Views.PostShow = Backbone.CompositeView.extend({
-  template: JST['post_show'],
+  template: JST['posts/post_show'],
 
   initialize: function () {
     // this.collection = this.model.comments();

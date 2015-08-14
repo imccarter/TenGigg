@@ -4,7 +4,8 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
   events: {
     'click .sign-out': 'logOut',
     'click .recent': 'recentHandler',
-    'click .navbar-brand': 'indexHandler'
+    'click .navbar-brand': 'indexHandler',
+    'click .btn-compose': 'composePost'
   },
 
   initialize: function (options) {
@@ -19,7 +20,17 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
   },
 
   recentHandler: function () {
+    // this.collection.sort({attr: 'created_at'});
     this.collection.reOrder('created_at');
+  },
+
+  composePost: function () {
+    var modal = new TenGigg.Views.PostForm({
+      model: new TenGigg.Models.Post(),
+      collection: this.collection
+    });
+    $('body').append(modal.$el);
+    modal.render();
   },
 
   render: function () {
