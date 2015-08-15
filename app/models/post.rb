@@ -10,7 +10,6 @@
 #  updated_at :datetime         not null
 #  image_id   :integer
 #
-require 'byebug'
 class Post < ActiveRecord::Base
   validates :author_id, :title, presence: true
 
