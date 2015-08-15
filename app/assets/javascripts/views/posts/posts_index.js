@@ -3,10 +3,6 @@ TenGigg.Views.PostsIndex = Backbone.CompositeView.extend({
   template: JST['posts/index'],
   className: 'post-index',
 
-  events: {
-    // 'submit form': 'addPost'
-  },
-
   initialize: function () {
     this.addPostViews();
     // this.addPostForm();
@@ -25,15 +21,6 @@ TenGigg.Views.PostsIndex = Backbone.CompositeView.extend({
     var view = new TenGigg.Views.PostIndexItem({ model: post });
     this.addSubview('.posts', view);
   },
-  //
-  // addPostForm: function () {
-  //   var post = new TenGigg.Models.Post();
-  //   var formView = new TenGigg.Views.PostForm({
-  //     collection: this.collection,
-  //     model: post
-  //   });
-  //   this.addSubview('.post-form', formView);
-  // },
 
   addPostViews: function () {
     this.collection.each(this.addPostView.bind(this));

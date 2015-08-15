@@ -59,17 +59,11 @@ TenGigg.Views.PostForm = Backbone.View.extend({
     e.preventDefault();
     var data = $(e.currentTarget).serializeJSON();
     var image = this.image;
-
-    debugger;
-    this.model.set({ image_id: image.get('id') });
+    //I guess this next line is unnecessary?
+    // this.model.set({ image_id: image.get('id') });
     this.model.set(data);
 
-    // var categories = [];
-    // for (var i = 0; i < data.category_ids.length; i++) {
-    //   categories.push(TenGigg.categories.models[data.category_ids[i] - 1]);
-    // }
 
-    // this.model.categories().set(categories);
     this.model.save({}, {
       success: function () {
         this.collection.add(this.model);

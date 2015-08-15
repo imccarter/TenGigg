@@ -19,7 +19,11 @@ TenGigg.Routers.Router = Backbone.Router.extend({
 
   show: function (id) {
     var post = this.collection.getOrFetch(id);
-    var showView = new TenGigg.Views.PostShow({ model: post });
+    var comments = post.comments();
+    var showView = new TenGigg.Views.PostShow({
+      model: post,
+      collection: comments
+    });
     this._swapView(showView);
   },
 
@@ -35,7 +39,8 @@ TenGigg.Routers.Router = Backbone.Router.extend({
   _swapView: function (view) {
     this._currentView && this._currentView.remove();
     this._currentView = view;
-    this.$rootEl.html(view.render().$el);
+    this.$rootEl.html(view.$el);
+    view.render();
   }
 
 });
