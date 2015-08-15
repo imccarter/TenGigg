@@ -1,13 +1,25 @@
 <div class="post-show">
 
   <h2><%= post.escape('title') %></h2>
-  <h3>Posted by: <%= post.attributes.user.get('username') %></h3>
+  <h4>Posted by: <%= post.author().escape('username') %></h4>
 
-  <h4>Categories: <%= post.attributes.categories %></h4>
 
+  <div class="categories">
+    Categories:
+    <% var categories = [] %>
+    <% post.categories().each(function (category) { %>
+      <% categories.push(category.escape("name")) %>
+    <% }); %>
+    <%= categories.join(", ") %>
+  </div>
+  <br>
   <% if (post.image) { %>
     <img
     src="<%= post.image().resizedUrl() %>" alt="" />
   <% } %>
   <div class='post-popularity'>Popularity: <%= post.escape("popularity") %></div>
+  
+  <div class="comments">
+  </div>
+
 </div>

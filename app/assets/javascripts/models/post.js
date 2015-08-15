@@ -17,6 +17,13 @@ TenGigg.Models.Post = Backbone.Model.extend({
     return this._categories;
   },
 
+  author: function () {
+    if (!this._author) {
+      this._author = new TenGigg.Models.User();
+    }
+    return this._author;
+  },
+
   parse: function (payload) {
     if (payload.image) {
       this.image().set(payload.image);
@@ -27,10 +34,11 @@ TenGigg.Models.Post = Backbone.Model.extend({
       this.categories().set(payload.categories);
       delete payload.categories;
     }
-    // 
-    // if (payload.user) {
-    //   this.author().set(payload.user.get('username'));
-    // }
+
+    if (payload.user) {
+      this.author().set(payload.user);
+      delete payload.user;
+    }
 
     return payload;
   }
