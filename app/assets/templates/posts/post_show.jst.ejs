@@ -1,25 +1,28 @@
-<div class="post-show">
+<div class="col-md-1"></div>
+<div class="col-md-7">
+	<div class="post-show">
+		<br>
 
-  <h2><%= post.escape('title') %></h2>
-  <h4>Posted by: <%= post.author().escape('username') %></h4>
-
-
-  <div class="categories">
-    Categories:
-    <% var categories = [] %>
-    <% post.categories().each(function (category) { %>
-      <% categories.push(category.escape("name")) %>
-    <% }); %>
-    <%= categories.join(", ") %>
-  </div>
-  <br>
-  <% if (post.image) { %>
-    <img
-    src="<%= post.image().resizedUrl() %>" alt="" />
-  <% } %>
-  <div class='post-popularity'>Popularity: <%= post.escape("popularity") %></div>
+  	<h3><%= post.escape('title') %></h3>
+  	<div class='post-details'>
+  		Posted by: <%= post.author().escape('username') %>
+  		<div class="categories">
+   			Categories:
+    		<% var categories = [] %>
+    		<% post.categories().each(function (category) { %>
+      		<% categories.push(category.escape("name")) %>
+    		<% }); %>
+    		<%= categories.join(", ") %>
+  		</div>
+  	</div>
+  	<br>
+  	<% if (post.image) { %>
+    	<img
+    	src="<%= post.image().resizedUrl() %>" alt="" />
+  	<% } %>
+  	<div class='post-popularity'>Popularity: <%= post.escape("popularity") %></div>
   
-  <div class="comments">
-  </div>
-
+	  <div class="comments">
+  	</div>
+	</div>
 </div>
