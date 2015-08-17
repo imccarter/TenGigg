@@ -1,5 +1,5 @@
 /* global TenGigg */
-TenGigg.Views.Users = Backbone.View.extend({
+TenGigg.Views.UserShow = Backbone.CompositeView.extend({
   template: JST['users/show'],
 
   render: function () {

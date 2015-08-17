@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
 	has_many :comments, as: :commentable
 
-  belongs_to :image, foreign_key: :image_id, class_name: :Image
+  belongs_to :image, class_name: :Image
 
 	def self.generate_token
 		SecureRandom.urlsafe_base64(16)

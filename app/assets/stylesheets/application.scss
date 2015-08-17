@@ -168,6 +168,20 @@ ul.category-select {
 }
 
 // COMMENTS
+.comments-container {
+  width: 58%;
+}
+
+.submit-comment {
+}
+
+.comment-field {
+  width: 75%;
+}
+
+.comments {
+  padding: 0;
+}
 
 .comment-author {
   font-size: 14px;
@@ -176,5 +190,5 @@ ul.category-select {
 
 .comment-body {
   font-size: 14px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }

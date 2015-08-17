@@ -16,7 +16,7 @@ class Post < ActiveRecord::Base
   validate :up_to_three_categories, on: :create
   belongs_to :author, class_name: :User
 
-  belongs_to :image, foreign_key: :image_id, class_name: :Image
+  belongs_to :image, class_name: :Image
 
   has_many :post_categories, inverse_of: :post, dependent: :destroy
   has_many :categories, through: :post_categories, source: :category

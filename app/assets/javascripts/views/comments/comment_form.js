@@ -33,7 +33,6 @@ TenGigg.Views.CommentForm = Backbone.View.extend({
 		this.model.set({
 			commentable_id: this.model.get('commentable_id'),
 			commentable_type: this.model.get('commentable_type')
-			// author_id: window.TenGigg.CURRENT_USER.id
 		});
 		this.model.save({}, {
 			success: function () {

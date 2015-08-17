@@ -1,12 +1,17 @@
+/* global TenGigg */
+
 window.TenGigg = {
   Models: {},
   Collections: {},
   Views: {},
   Routers: {},
   initialize: function() {
-    // alert('Hello from Backbone!');
     TenGigg.categories = new TenGigg.Collections.Categories();
+
+    //Is gathering all the users in a collection ok?
+    TenGigg.users = new TenGigg.Collections.Users();
     TenGigg.categories.fetch();
+    TenGigg.users.fetch();
 
     var posts = new TenGigg.Collections.Posts();
     var router = new TenGigg.Routers.Router({
