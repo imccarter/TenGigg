@@ -28,7 +28,7 @@ ul {
   color: white;
 }
 
-.navbar-inverse .navbar-nav > li {
+.navbar-inverse .navbar-nav > li > :not(btn) {
   border-right: 1px solid #625D5D;
 }
 
@@ -53,6 +53,10 @@ ul {
 	width: 100%;
 	vertical-align: middle;
 	line-height: 2;
+}
+
+btn#compose {
+	border: 0;
 }
 
 ul.posts {

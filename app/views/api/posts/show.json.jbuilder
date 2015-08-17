@@ -4,3 +4,8 @@ json.categories do
     json.extract! category, :id, :name
   end
 end
+# json.comments do
+# 	json.array! @post.comments do |comment|
+# 		json.extract! comment, :id, :body, :author-id
+# 	end
+# end

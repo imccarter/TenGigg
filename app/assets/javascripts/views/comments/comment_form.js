@@ -5,9 +5,7 @@ TenGigg.Views.CommentForm = Backbone.View.extend({
 		'submit form': 'addComment'
 	},
 	
-	initialize: function (options) {
-		this.parent = options.parent
-		this.commentableType = options.type
+	initialize: function () {
 	},
 	
 	render: function () {
@@ -27,7 +25,6 @@ TenGigg.Views.CommentForm = Backbone.View.extend({
 		});
 		this.model.save({}, {
 			success: function () {
-				console.log("adding a comment!")
 				this.collection.add(this.model);
 			}.bind(this),
 		});

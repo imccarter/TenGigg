@@ -3,7 +3,9 @@ TenGigg.Views.PostShow = Backbone.CompositeView.extend({
 
   initialize: function () {
 		this.collection = this.model.comments();
+		this.collection.fetch();
 		this.addPostCommentForm();
+		this.addCommentViews();
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.collection, 'add', this.addCommentView);
@@ -19,9 +21,7 @@ TenGigg.Views.PostShow = Backbone.CompositeView.extend({
   addPostCommentForm: function () {
   	var formView = new TenGigg.Views.CommentForm({ 
   		model: new TenGigg.Models.Comment,
-  		collection: this.collection,
-  		parent: this.model,
-  		type: 'Post'
+  		collection: this.collection
   	});
   	this.addSubview('.comments', formView);
   },

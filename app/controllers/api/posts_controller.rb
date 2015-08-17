@@ -27,9 +27,6 @@ class Api::PostsController < ApplicationController
     @post.category_ids = params[:category_ids]
 
     if @post.save
-      # post_params.category_ids.each do |id|
-      #   PostCategory.create!(post_id: @post.id, category_id: id)
-      # end
       render json: @post
     else
       render json: @post.errors.full_messages, status: :unprocessable_entity
