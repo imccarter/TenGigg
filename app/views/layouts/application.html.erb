@@ -17,9 +17,17 @@
 
   <script type="text/javascript">
     <% if logged_in? %>
-      window.username = "<%= current_user.username %>"
+      // window.username = "<%= current_user.username %>"
+      window.TenGigg.CURRENT_USER = {
+        id: "<%= current_user.id %>",
+        username: "<%= current_user.username %>"
+      };
     <% else %>
-      window.username = "Account"
+      // window.username = "Account"
+      window.TenGigg.CURRENT_USER = {
+        id: null,
+        username: "Account"
+      };
     <% end %>
   </script>
 

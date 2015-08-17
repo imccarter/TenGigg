@@ -1,9 +1,9 @@
+/* global TenGigg */
+
 TenGigg.Views.PostShow = Backbone.CompositeView.extend({
   template: JST['posts/post_show'],
 
   initialize: function () {
-		this.collection = this.model.comments();
-		this.collection.fetch();
 		this.addPostCommentForm();
 		this.addCommentViews();
     this.listenTo(this.model, 'sync', this.render);
@@ -17,13 +17,17 @@ TenGigg.Views.PostShow = Backbone.CompositeView.extend({
     this.attachSubviews();
     return this;
   },
-  
+
   addPostCommentForm: function () {
-  	var formView = new TenGigg.Views.CommentForm({ 
-  		model: new TenGigg.Models.Comment,
+    var newComment = new TenGigg.Models.Comment({
+      commentable_id: this.model.id,
+      commentable_type: "Post"
+    });
+  	var formView = new TenGigg.Views.CommentForm({
+  		model: newComment,
   		collection: this.collection
   	});
-  	this.addSubview('.comments', formView);
+  	this.addSubview('.comments', formView, true);
   },
 
   addCommentView: function (comment) {

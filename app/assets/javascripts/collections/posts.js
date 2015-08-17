@@ -1,3 +1,5 @@
+/* global TenGigg */
+
 TenGigg.Collections.Posts = Backbone.Collection.extend({
   model: TenGigg.Models.Post,
   url: '/api/posts',
@@ -9,7 +11,6 @@ TenGigg.Collections.Posts = Backbone.Collection.extend({
   // },
 
   reOrder: function (attr) {
-    console.log("Reordering?");
     var models = this.sortBy(attr).reverse();
     this.set([]);
     this.set(models);

@@ -16,6 +16,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+//GENERAL
+
 body {
   font-family: 'Verdana';
 }
@@ -23,6 +25,12 @@ body {
 ul {
   list-style-type: none;
 }
+
+a {
+	color: inherit;
+}
+
+//NAVBAR
 
 .navbar-inverse .navbar-nav > li > a {
   color: white;
@@ -55,15 +63,13 @@ ul {
 	line-height: 2;
 }
 
-btn#compose {
+#compose {
 	border: 0;
+  margin-top: 9px;
+  margin-right: 8px;
 }
 
-ul.posts {
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-top: 20px;
-}
+//AUTH STUFF
 
 .form-container {
   text-align: center;
@@ -81,16 +87,9 @@ ul.posts {
   padding-right: 15px;
 }
 
-a {
-	color: inherit;
-}
 
-.post-index .posts {
-  display: block;
-  width: 100%;
-  margin: 20px;
-  border-right: 1px solid #D8D8D8;
-}
+
+//POST STUFF, INDEX + SHOW
 
 .post-index-item {
 	padding-bottom: 20px;
@@ -105,6 +104,26 @@ a {
   font-size: 12px;
 }
 
+.post-comments {
+  font-size: 12px;
+  padding-left: 30px;
+}
+
+//MAIN INDEX
+
+ul.posts {
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 20px;
+}
+
+.post-index .posts {
+  display: block;
+  width: 100%;
+  margin: 20px;
+  border-right: 1px solid #D8D8D8;
+}
+
 .index-item-bumper {
 	padding-top: 20px;
 	height: 10px;
@@ -112,6 +131,8 @@ a {
 	border-bottom: 1px solid #D8D8D8;
 	z-index: 2;
 }
+
+//POST FORM MODAL
 
 ul.category-select {
   -moz-column-count: 4;
@@ -144,4 +165,16 @@ ul.category-select {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
+}
+
+// COMMENTS
+
+.comment-author {
+  font-size: 14px;
+  color: #0009BA;
+}
+
+.comment-body {
+  font-size: 14px;
+  padding-bottom: 10px;
 }

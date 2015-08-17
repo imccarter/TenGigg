@@ -5,7 +5,7 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     'click .sign-out': 'logOut',
     'click .recent': 'recentHandler',
     'click .navbar-brand': 'indexHandler',
-    'click .btn-compose': 'composePost'
+    'click #compose': 'composePost'
   },
 
   initialize: function (options) {
@@ -40,11 +40,11 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
   },
 
   logOut: function() {
-    window.username = "Account";
     $.ajax({
       url: '/session',
       type: 'DELETE',
       success: function() {
+        window.TenGigg.CURRENT_USER.username = "Account";
         this.render();
       }.bind(this)
     });

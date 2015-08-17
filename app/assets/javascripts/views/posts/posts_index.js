@@ -1,3 +1,5 @@
+/* global TenGigg */
+
 TenGigg.Views.PostsIndex = Backbone.CompositeView.extend({
 
   template: JST['posts/index'],
@@ -17,7 +19,10 @@ TenGigg.Views.PostsIndex = Backbone.CompositeView.extend({
   },
 
   addPostView: function (post) {
-    var view = new TenGigg.Views.PostIndexItem({ model: post });
+    var view = new TenGigg.Views.PostIndexItem({
+      model: post,
+      collection: post.comments() //Check this...
+    });
     this.addSubview('.posts', view);
   },
 

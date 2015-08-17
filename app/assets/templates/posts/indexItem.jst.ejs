@@ -3,5 +3,8 @@
   <img
   src="<%= post.image().resizedUrl() %>" alt="" />
 <% } %>
-<div class='post-popularity'>Popularity: <%= post.escape("popularity") %></div>
+<div class="post-stats">
+  <span class='post-popularity'>Popularity: <%= post.escape("popularity") %></span>
+  <span class='post-comments'>Comments: <%= post.comments().length %></span>
+</div>
 <div class='index-item-bumper'></div>

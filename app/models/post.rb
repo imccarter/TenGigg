@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
   validates :author_id, :title, presence: true
 
   validate :up_to_three_categories, on: :create
-  belongs_to :user, foreign_key: :author_id, class_name: :User
+  belongs_to :author, class_name: :User
 
   belongs_to :image, foreign_key: :image_id, class_name: :Image
 

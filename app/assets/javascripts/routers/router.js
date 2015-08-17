@@ -8,7 +8,8 @@ TenGigg.Routers.Router = Backbone.Router.extend({
   routes: {
     "": "index",
     ":category/posts": "category",
-    "posts/:id": "show"
+    "posts/:id": "postShow"
+    // "users/:id": "userShow"
   },
 
   index: function () {
@@ -17,7 +18,7 @@ TenGigg.Routers.Router = Backbone.Router.extend({
     this._swapView(indexView);
   },
 
-  show: function (id) {
+  postShow: function (id) {
     var post = this.collection.getOrFetch(id);
     var comments = post.comments();
     var showView = new TenGigg.Views.PostShow({
@@ -26,6 +27,11 @@ TenGigg.Routers.Router = Backbone.Router.extend({
     });
     this._swapView(showView);
   },
+
+  // userShow: function (id) {
+  //   var user =
+  //
+  // },
 
   category: function (category) {
     var posts = new TenGigg.Collections.Posts();
