@@ -20,7 +20,7 @@ end
 
 
 image1 = Image.create(
-  url: "http://res.cloudinary.com/dwds5fsan/image/upload/v1439584002/zdbn1vwgel6orzfpdjug.jpg",
+  url: "http://res.cloudinary.com/dwds5fsan/image/upload/v1439847620/le9gqqfkqayg7sfzqkpp.jpg",
   thumbnail_url: "http://res.cloudinary.com/dwds5fsan/image/upload/c_limit,h_60,w_90/v1439584002/zdbn1vwgel6orzfpdjug.jpg",
   width: 800,
   height: 600
@@ -33,6 +33,11 @@ image2 = Image.create(
   height: 600
 )
 
+user = User.create(
+  username: "Demo User",
+  password_digest: "$2a$10$Ur.Oi2bJWfC3kf38CI8Up.VTtCHifYokRxbrxY/UWttFWN1MksPB6",
+  session_token: "k3HjY00uUyS9d8GTVqyqrQ"
+)
 
 post1 = Post.create(title: "THE UNICORN", author_id: 1, image: image1, image_id: image1.id, popularity: 3,
   categories: [Category.find(2), Category.find(3)])
@@ -40,3 +45,5 @@ post1 = Post.create(title: "THE UNICORN", author_id: 1, image: image1, image_id:
 
 post2 = Post.create(title: "This tree", author_id: 2, image: image2, image_id: image2.id, popularity: -2,
   categories: [Category.find(3), Category.find(4), Category.find(6)])
+
+comment1 = Comment.create(body: "Shockingly beautiful.", author_id: 1, commentable_id: 1, commentable_type: "Post")

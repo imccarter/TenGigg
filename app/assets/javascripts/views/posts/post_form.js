@@ -58,12 +58,12 @@ TenGigg.Views.PostForm = Backbone.View.extend({
   savePost: function(e) {
     e.preventDefault();
     var data = $(e.currentTarget).serializeJSON();
-    
+
 //     var image = this.image;
-    
+
     //I guess the previous and next lines are unnecessary?
     // this.model.set({ image_id: image.get('id') });
-    
+
     this.model.set(data);
 
 

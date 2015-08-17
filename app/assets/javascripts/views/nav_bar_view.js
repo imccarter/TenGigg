@@ -5,7 +5,8 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     'click .sign-out': 'logOut',
     'click .recent': 'recentHandler',
     'click .navbar-brand': 'indexHandler',
-    'click #compose': 'composePost'
+    'click #compose': 'composePost',
+    // 'click #guest': 'guestLogIn'
   },
 
   initialize: function (options) {
@@ -39,7 +40,7 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     return this;
   },
 
-  logOut: function() {
+  logOut: function () {
     $.ajax({
       url: '/session',
       type: 'DELETE',
@@ -50,9 +51,19 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     });
   },
 
-  handleRoute: function (routeName, params) {
-    this.$el.find('.active').removeClass('active');
-    this.$el.find('.' + routeName).addClass('active');
-  }
+  // guestLogIn: function () {
+  //   $.ajax({
+  //     url: '/session',
+  //     type: 'POST',
+  //     success: function () {
+  //       this.render();
+  //     }.bind(this)
+  //   });
+  // }
+  //
+  // handleRoute: function (routeName, params) {
+  //   this.$el.find('.active').removeClass('active');
+  //   this.$el.find('.' + routeName).addClass('active');
+  // }
 
 });

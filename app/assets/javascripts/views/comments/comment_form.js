@@ -39,7 +39,7 @@ TenGigg.Views.CommentForm = Backbone.View.extend({
 			success: function () {
 				this.model.author().set({
 					id: window.TenGigg.CURRENT_USER.id,
-					username: window.username
+					username: window.TenGigg.CURRENT_USER.username
 				});
 				this.collection.add(this.model);
 			}.bind(this),
