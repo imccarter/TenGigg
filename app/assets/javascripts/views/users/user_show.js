@@ -5,7 +5,9 @@ TenGigg.Views.UserShow = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.addPostViews();
     this.comments = options.comments;
-    //collection is posts authored by user...?
+    this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.collection, 'add', this.addPostView);
+    this.listenTo(this.collection, 'remove', this.removePostView);
   },
 
   render: function () {
@@ -19,6 +21,7 @@ TenGigg.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   addPostView: function (post) {
+    debugger;
     var view = new TenGigg.Views.PostIndexItem({
       model: post,
       collection: post.comments()
@@ -33,5 +36,4 @@ TenGigg.Views.UserShow = Backbone.CompositeView.extend({
   removePostView: function (post) {
     this.removeModelSubview('.user-posts', post);
   }
-
 });

@@ -1,3 +1,5 @@
+/* global TenGigg */
+
 TenGigg.Views.NavBarView = Backbone.View.extend({
   template: JST['nav_bar'],
 
@@ -21,7 +23,6 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
   },
 
   recentHandler: function () {
-    // this.collection.sort({attr: 'created_at'});
     this.collection.reOrder('created_at');
   },
 
@@ -51,16 +52,6 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     });
   },
 
-  // guestLogIn: function () {
-  //   $.ajax({
-  //     url: '/session',
-  //     type: 'POST',
-  //     success: function () {
-  //       this.render();
-  //     }.bind(this)
-  //   });
-  // }
-  //
   // handleRoute: function (routeName, params) {
   //   this.$el.find('.active').removeClass('active');
   //   this.$el.find('.' + routeName).addClass('active');
