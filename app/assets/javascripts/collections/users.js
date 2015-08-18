@@ -1,7 +1,7 @@
 /* global TenGigg */
 
 TenGigg.Collections.Users = Backbone.Collection.extend({
-  url: 'users',
+  url: 'api/users',
 
   model: TenGigg.Models.User,
 
