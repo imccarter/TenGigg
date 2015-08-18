@@ -1,4 +1,5 @@
 <div class="form-container">
+
 	<form action='<%= session_url %>' method='post' class='auth-form'>
 		<%= auth_token %>
 		<h3>Log In</h3>
@@ -14,5 +15,12 @@
 		<span>
 			<input type='submit' value='Log In' class='log-in-btn'>
 		</span>
+		<form action='<%= session_url %>' method='post' class='auth-form'>
+			<%= auth_token %>
+			<input type="hidden" value="Guest" name='user[username]'>
+			<input type="hidden" value="tester" name='user[password]'>
+			<input type="submit" value='Guest'>
+		</form>
 	</form>
+	<!-- Guest Login for Demo -->
 </div>

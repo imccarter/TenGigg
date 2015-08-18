@@ -39,6 +39,12 @@ user = User.create(
   session_token: "k3HjY00uUyS9d8GTVqyqrQ"
 )
 
+guest = User.create(
+  username: "Guest",
+  password_digest: "$2a$10$3cRcu9Bs38O3.8YvoH5lEuN4YoMq9d8mVZosCiUAbrAmZ4miTZF8O",
+  session_token: "k3HjY00uUyS9d8GTVqyqrQ"
+)
+
 post1 = Post.create(title: "THE UNICORN", author_id: 1, image: image1, image_id: image1.id, popularity: 3,
   categories: [Category.find(2), Category.find(3)])
 
