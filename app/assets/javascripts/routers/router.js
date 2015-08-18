@@ -32,8 +32,12 @@ TenGigg.Routers.Router = Backbone.Router.extend({
 
   userShow: function (id) {
     var user = TenGigg.users.getOrFetch(id);
+    var posts = user.posts();
+    var comments = user.comments();
     var showView = new TenGigg.Views.UserShow({
-      model: user
+      model: user,
+      collection: posts,
+      comments: comments
     });
     this._swapView(showView);
   },

@@ -192,3 +192,37 @@ ul.category-select {
   font-size: 14px;
   padding-bottom: 20px;
 }
+
+// USER PROFILE
+#user-splash {
+  background-color: #2E2E2E;
+  height: 250px;
+  text-align: center;
+  color: white;
+}
+
+#section-nav {
+  height: 50px;
+  background-color: white;
+  border-bottom: 1px solid #D8D8D8;
+}
+
+#section-nav ul.navbar-nav > li {
+  padding-right: 20px;
+}
+
+#section-nav ul.navbar-nav > li > a {
+  height: 80%;
+  padding-bottom: 10px;
+  background-color: white;
+}
+
+#section-nav ul.navbar-nav > li > a:hover {
+  border-bottom: 4px solid black;
+  color: black;
+}
+
+#section-nav ul.navbar-nav > li > a:focus {
+  border-bottom: 4px solid #045FB4;
+  color: black;
+}
