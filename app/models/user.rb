@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
 
 	has_many :posts, foreign_key: :author_id, class_name: :Post
 
-	has_many :comments, as: :commentable
+	has_many :comments, foreign_key: :author_id
 
   belongs_to :image, class_name: :Image
 
@@ -49,6 +49,13 @@ class User < ActiveRecord::Base
 		self.session_token = self.class.generate_token
 		self.save!
 		self.session_token
+	end
+
+	def all_posts
+		Post.select("posts.*").joins(<<-SQL
+			JOIN comments ON comments.commentable_id = posts.id AND comments.commentable_type = 'Post'
+		SQL
+		).where("posts.author_id = ? OR comments.author_id = ?", self.id, self.id)
 	end
 
 	private

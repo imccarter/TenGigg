@@ -22,7 +22,6 @@ window.TenGigg = {
       router: router,
       $navEl: $('#navbar'),
       collection: posts,
-      categories: TenGigg.categories
     });
     navbar.render();
     Backbone.history.start();

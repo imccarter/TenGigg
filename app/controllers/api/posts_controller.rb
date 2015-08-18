@@ -12,14 +12,7 @@ class Api::PostsController < ApplicationController
     elsif params[:user]
       user = User.includes(:posts).find(params[:id])
       if user
-        commented_posts = []
-
-        user.comments.each do |comment|
-          post = Post.find(comment.commentable_id)
-          if !commented_posts.include?(post) && comment.commentable_type == 'Post'
-            commented_posts << Post.find(comment.commentable_id)
-          end
-        @posts = (user.posts + commented_posts).uniq
+        @posts = user.all_posts
         render :index
       else
         render json: ["could not find user"], status: 422

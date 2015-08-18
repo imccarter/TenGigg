@@ -42,21 +42,21 @@ TenGigg.Routers.Router = Backbone.Router.extend({
     this._swapView(showView);
   },
 
-  userShowPosts: function (id) {
-    var user = TenGigg.users.getOrFetch(id);
-    var posts = user.posts();
-    var comments = user.comments();
-    var showView = new TenGigg.Views.UserShow({
-      model: user,
-      collection: posts,
-      comments: comments
-    });
-    this._swapView(showView);
-  },
-
-  userShowCommented: function (id) {
-
-  },
+  // userShowPosts: function (id) {
+  //   var user = TenGigg.users.getOrFetch(id);
+  //   var posts = user.posts();
+  //   var comments = user.comments();
+  //   var showView = new TenGigg.Views.UserShow({
+  //     model: user,
+  //     collection: posts,
+  //     comments: comments
+  //   });
+  //   this._swapView(showView);
+  // },
+  //
+  // userShowCommented: function (id) {
+  //
+  // },
 
   category: function (category) {
     var posts = new TenGigg.Collections.Posts();

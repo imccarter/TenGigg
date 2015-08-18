@@ -4,20 +4,11 @@ TenGigg.Collections.Posts = Backbone.Collection.extend({
   model: TenGigg.Models.Post,
   url: '/api/posts',
 
-  initialize: function (models) {
-  },
-
   reOrder: function (attr) {
     var models = this.sortBy(attr).reverse();
     this.set([]);
     this.set(models);
   },
-
-  // filter: function (attr) {
-  //   var models = this.filter(function (post) {
-  //     post
-  //   });
-  // },
 
   getOrFetch: function (id) {
     var post = this.get(id);

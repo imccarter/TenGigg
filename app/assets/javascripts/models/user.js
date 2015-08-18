@@ -24,7 +24,7 @@ TenGigg.Models.User = Backbone.Model.extend({
     }
 
     if (payload.posts) {
-      this.posts().set(payload.posts);
+      this.posts().set(payload.posts, { parse: true });
       delete payload.posts;
     }
 
