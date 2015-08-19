@@ -9,6 +9,7 @@ class Api::PostsController < ApplicationController
       else
         render json: ["category does not exist"], status: 422
       end
+
     elsif params[:user_id]
       user = User.includes(:posts).find(params[:user_id])
       if user
@@ -26,6 +27,7 @@ class Api::PostsController < ApplicationController
       else
         render json: ["could not find user"], status: 422
       end
+      
     else
       @posts = Post.order(popularity: :desc)
       render :index

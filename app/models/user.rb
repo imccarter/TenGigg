@@ -59,7 +59,6 @@ class User < ActiveRecord::Base
 
 	def all_posts
 		posts + commented_posts.where("posts.author_id != ?", id)
-		# Post.select("posts.*").joins("JOIN comments ON comments.commentable_id = posts.id AND comments.commentable_type = 'Post'").where("posts.author_id = ? OR comments.author_id = ?", self.id, self.id)
 	end
 
 	private

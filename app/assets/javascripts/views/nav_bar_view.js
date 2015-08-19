@@ -47,6 +47,7 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
       success: function() {
         window.TenGigg.CURRENT_USER.username = "Account";
         this.render();
+        Backbone.history.navigate('#', { trigger: true });
       }.bind(this)
     });
   },

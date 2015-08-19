@@ -20,23 +20,6 @@ TenGigg.Views.UserShow = Backbone.CompositeView.extend({
 
   },
 
-  setActivePosts: function () {
-    debugger;
-
-    this.subviews('.user-posts').each(function (view) {
-      // this.removeSubview('.user-posts', view);
-      view.remove();
-    }.bind(this));
-    this.subviews()['.user-posts'] = _([]);
-
-    this.activePosts.forEach(function (post) {
-      this.addPostView(post);
-    }.bind(this));
-
-    this.render();
-  },
-
-
   render: function () {
     var content = this.template({
       user: this.model,
@@ -70,9 +53,6 @@ TenGigg.Views.UserShow = Backbone.CompositeView.extend({
         user_id: this.model.id
       }
     });
-
-    // this.activePosts.set(this.collection.models);
-    // this.collection.trigger('filter');
   },
 
   handlePosts: function () {
@@ -82,10 +62,6 @@ TenGigg.Views.UserShow = Backbone.CompositeView.extend({
         user_id: this.model.id
       }
     });
-    // this.activePosts.set(
-    //   this.collection.where({ author_id: this.model.get('id') })
-    // );
-    // this.collection.trigger('filter');
   },
 
   handleCommented: function () {
@@ -95,11 +71,5 @@ TenGigg.Views.UserShow = Backbone.CompositeView.extend({
         user_id: this.model.id
       }
     });
-
-    // this.activePosts.reset();
-    // this.comments.each(function (cmt) {
-    //   this.activePosts.push(this.collection.where({ id: cmt.get('commentable_id') }));
-    // });
-    // this.collection.trigger('filter');
   }
 });
