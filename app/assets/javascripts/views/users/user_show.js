@@ -9,15 +9,12 @@ TenGigg.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    this.activePosts = new TenGigg.Collections.Posts(this.collection.models);
-    this.addPostViews();
-    this.comments = options.comments;
+//     this.activePosts = new TenGigg.Collections.Posts(this.collection.models);
+//     this.comments = options.comments;
+		this.addPostViews();
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.collection, 'add', this.addPostView);
     this.listenTo(this.collection, 'remove', this.removePostView);
-
-    this.listenTo(this.collection, 'filter', this.setActivePosts);
-
   },
 
   render: function () {

@@ -18,8 +18,13 @@
 
 //GENERAL
 
+html {
+	height: 100%;
+}
+
 body {
   font-family: 'Verdana';
+  height: 100%;
 }
 
 ul {
@@ -88,9 +93,9 @@ a {
   background-color: white;
 }
 
-.full-page {
+div.full-page {
   padding: 40px;
-  height: 900px;
+  height: 100%;
   width: 100%;
   background-color: black;
 }
@@ -174,11 +179,13 @@ ul.category-select {
 }
 
 // COMMENTS
+
 .comments-container {
   width: 58%;
 }
 
 .submit-comment {
+	margin-top: 8px;
 }
 
 .comment-field {
@@ -200,6 +207,7 @@ ul.category-select {
 }
 
 // USER PROFILE
+
 #user-splash {
   background-color: #2E2E2E;
   height: 250px;

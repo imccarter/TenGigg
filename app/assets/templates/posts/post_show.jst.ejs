@@ -1,7 +1,7 @@
 <div class="col-md-1"></div>
 <div class="col-md-7">
 	<div class="post-show">
-		<br>
+		<br><br>
 
   	<h3><%= post.escape('title') %></h3>
   	<div class='post-details'>
@@ -17,8 +17,7 @@
   	</div>
   	<br>
   	<% if (post.image) { %>
-    	<img
-    	src="<%= post.image().resizedUrl() %>" alt="" />
+    	<img src="<%= post.image().resizedUrl() %>" alt="" />
   	<% } %>
 		<div class="post-stats">
   		<span class='post-popularity'>Popularity: <%= post.escape("popularity") %></span>
