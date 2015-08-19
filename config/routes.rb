@@ -3,12 +3,14 @@ Rails.application.routes.draw do
 
 	namespace :api, defaults: {format: :json} do
 		resources :users, only: [:index, :show]
-		resources :posts, except: [:new, :edit]
+		resources :posts, except: [:new, :edit] do
+			get "random", to: "posts#random", on: :collection
+		end
 		resources :categories, only: :index
 		resources :images, except: [:new, :edit]
 		resources :comments, except: [:new, :edit]
 	end
-	
+
 	resources :users, only: [:new, :create]
 	resource :session, only: [:create, :new, :destroy]
 end

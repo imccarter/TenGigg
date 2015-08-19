@@ -16,7 +16,9 @@ TenGigg.Routers.Router = Backbone.Router.extend({
 
   index: function () {
     this.collection.fetch();
-    var indexView = new TenGigg.Views.PostsIndex({ collection: this.collection });
+    var indexView = new TenGigg.Views.PostsIndex({
+      collection: this.collection
+    });
     this._swapView(indexView);
   },
 

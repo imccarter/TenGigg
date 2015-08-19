@@ -14,6 +14,8 @@ window.TenGigg = {
     TenGigg.users.fetch();
 
     var posts = new TenGigg.Collections.Posts();
+
+
     var router = new TenGigg.Routers.Router({
       $rootEl: $('#root'),
       posts: posts
@@ -23,6 +25,16 @@ window.TenGigg = {
       $navEl: $('#navbar'),
       collection: posts,
     });
+
+    var sidePosts = new TenGigg.Collections.Posts();
+    sidePosts.fetch({ url: 'api/posts/random' });
+
+    var thumbIndex = new TenGigg.Views.PostThumbsIndex({
+      collection: sidePosts,
+      $sideEl: $('#sidebar')
+    });
+    // add sidebar, use its own collection
+    // call collection.fetch({ url: "api/posts/random" })
     navbar.render();
     Backbone.history.start();
   }
