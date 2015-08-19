@@ -48,7 +48,7 @@ TenGigg.Models.Post = Backbone.Model.extend({
     }
 
     if (payload.comments) {
-    	this.comments().set(payload.comments, {parse: true});
+    	this.comments().set(payload.comments, { parse: true });
     	delete payload.comments;
     }
 

@@ -17,6 +17,13 @@ TenGigg.Models.User = Backbone.Model.extend({
     return this._comments;
   },
 
+  image: function () {
+    if (!this._image) {
+      this._image = new TenGigg.Models.Image();
+    }
+    return this._image;
+  },
+
   parse: function (payload) {
     if (payload.comments) {
       this.comments().set(payload.comments);
@@ -26,6 +33,11 @@ TenGigg.Models.User = Backbone.Model.extend({
     if (payload.posts) {
       this.posts().set(payload.posts, { parse: true });
       delete payload.posts;
+    }
+
+    if (payload.image) {
+      this.image().set(payload.image);
+      delete payload.image;
     }
 
     return payload;

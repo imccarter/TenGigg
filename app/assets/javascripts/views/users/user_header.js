@@ -5,7 +5,8 @@ TenGigg.Views.UserHeader = Backbone.View.extend({
   events: {
     'click a.overview': 'handleAllPosts',
     'click a.posts': 'handlePosts',
-    'click a.comments': 'handleCommented'
+    'click a.comments': 'handleCommented',
+    'click #profile': 'handleProfile'
   },
 
   render: function () {
@@ -15,6 +16,14 @@ TenGigg.Views.UserHeader = Backbone.View.extend({
     });
     this.$el.html(content);
     return this;
+  },
+
+  handleProfile: function () {
+    var modal = new TenGigg.Views.UserEdit({
+      model: this.model,
+    });
+    $('body').append(modal.$el);
+    modal.render();
   },
 
   handleAllPosts: function () {

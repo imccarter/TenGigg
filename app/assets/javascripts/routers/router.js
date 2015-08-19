@@ -12,11 +12,13 @@ TenGigg.Routers.Router = Backbone.Router.extend({
   routes: {
     "": "index",
     ":category/posts": "category",
+    "profile": "profile",
     "posts/:id": "postShow",
     "users/:id": "userShow"
   },
 
   index: function () {
+    this.headerView && this.headerView.remove();
     this.collection.fetch();
     var indexView = new TenGigg.Views.PostsIndex({
       collection: this.collection
@@ -25,6 +27,7 @@ TenGigg.Routers.Router = Backbone.Router.extend({
   },
 
   postShow: function (id) {
+    this.headerView && this.headerView.remove();
     var post = this.collection.getOrFetch(id);
     var comments = post.comments();
     var showView = new TenGigg.Views.PostShow({
@@ -34,11 +37,11 @@ TenGigg.Routers.Router = Backbone.Router.extend({
     this._swapView(showView, this.$indexEl);
   },
 
-  userShow: function (id) {
-    var user = TenGigg.users.getOrFetch(id);
+  profile: function () {
+    var user = TenGigg.users.getOrFetch(window.TenGigg.CURRENT_USER.id);
     var posts = user.posts();
     var comments = user.comments();
-    var headerView = new TenGigg.Views.UserHeader({
+    this.headerView = new TenGigg.Views.UserHeader({
       model: user,
       collection: posts,
       comments: comments
@@ -48,12 +51,23 @@ TenGigg.Routers.Router = Backbone.Router.extend({
       collection: posts,
       comments: comments
     });
-    this._swapView(showView, this.$indexEl);
-    this.$headerEl.html(headerView.$el);
-    headerView.render();
+
+    this.$indexEl.html(showView.$el);
+    showView.render();
+
+    this.$headerEl.html(this.headerView.$el);
+    this.headerView.render();
+  },
+
+  userShow: function (id) {
+    var otherUser = TenGigg.users.getOrFetch(id);
+    var posts = otherUser.posts();
+    var comments = otherUser.comments();
+    //STILL OBVIOUSLY UNDER CONSTRUCTION...
   },
 
   category: function (category) {
+    this.headerView && this.headerView.remove();
     var posts = new TenGigg.Collections.Posts();
     posts.fetch({
       data: { category: category }
@@ -64,6 +78,7 @@ TenGigg.Routers.Router = Backbone.Router.extend({
 
   _swapView: function (view, where) {
     this._currentView && this._currentView.remove();
+    // this.$headerEl && this.$headerEl.remove();
     this._currentView = view;
     where.html(view.$el);
     view.render();
