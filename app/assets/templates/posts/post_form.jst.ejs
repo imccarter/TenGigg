@@ -11,7 +11,9 @@
       <h5>Image:</h5>
     </div><br>
 
-    <button class='upload-button'>Upload Image</button><br></br>
+    <button class='btn btn-default upload-button'>Upload Image</button>
+
+    <br></br>
     <h4>Categories, select up to three:</h4>
     <ul class="category-select">
       <% TenGigg.categories.each(function (category) { %>
@@ -21,9 +23,8 @@
       <% }); %>
     </ul>
     <br>
-
-    <input type="submit" value="Submit Post!">
-    <button id="close">Cancel</button>
+    <input type="submit" class="btn btn-info" value="Submit Post!">
+    <button id="close" class="btn btn-danger">Cancel</button>
     <br>
   </form>
 </div>

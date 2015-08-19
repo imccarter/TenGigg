@@ -1,3 +1,5 @@
+/* global TenGigg */
+
 TenGigg.Views.PostForm = Backbone.View.extend({
   template: JST['posts/post_form'],
 
@@ -38,37 +40,51 @@ TenGigg.Views.PostForm = Backbone.View.extend({
     cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, function(error, result) {
       var data = result[0];
       this.image.set({
-        url: data.url,
-        thumbnail_url: data.thumbnail_url,
+        url: this.formatMainImage(data.url),
+        thumbnail_url: this.formatThumbnail(data.thumbnail_url),
         width: data.width,
         height: data.height
       });
       this.image.save({}, {
         success: function (image) {
           post.set({image_id: image.get('id')});
-          // POSSIBLY REFACTOR INSERTING THE THUMB PIC???
-          $('.thumb-container').append(
-            "<img src='" + image.escape('thumbnail_url') + "' alt='' />"
+          this.$('.thumb-container').append(
+            "<img src='" + image.escape('thumbnail_url') + "' alt='thumb' />"
           );
-        }
+        }.bind(this),
       });
     }.bind(this));
+  },
+
+  formatThumbnail: function (url) {
+    var formattedThumb = url.split('/');
+    for (var i = 0; i < formattedThumb.length; i++) {
+      if (formattedThumb[i] === 'upload') {
+        formattedThumb.splice((i + 1), 1, 'w_90,h_90,c_fill');
+      }
+    }
+    return formattedThumb.join('/');
+  },
+
+  formatMainImage: function (url) {
+    var formattedMain = url.split('/');
+    for (var i = 0; i < formattedMain.length; i++) {
+      if (formattedMain[i] === 'upload') {
+        formattedMain.splice((i + 1), 0, 'w_550,h_550,c_fit');
+      }
+    }
+    return formattedMain.join('/');
   },
 
   savePost: function(e) {
     e.preventDefault();
     var data = $(e.currentTarget).serializeJSON();
 
-//     var image = this.image;
-
-    //I guess the previous and next lines are unnecessary?
-    // this.model.set({ image_id: image.get('id') });
-
     this.model.set(data);
-
 
     this.model.save({}, {
       success: function () {
+        // NEW VALIDATION METHOD ON POST?
         this.collection.add(this.model);
         // Backbone.history.navigate("#", { trigger: true });
         window.location = "/";

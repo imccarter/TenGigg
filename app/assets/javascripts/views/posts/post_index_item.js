@@ -1,7 +1,7 @@
 /* global TenGigg */
 
 TenGigg.Views.PostIndexItem = Backbone.View.extend({
-  template: JST['posts/indexItem'],
+  template: JST['posts/index_item'],
   tagName: "li",
   className: "post-index-item",
 

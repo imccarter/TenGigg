@@ -17,7 +17,7 @@
   	</div>
   	<br>
   	<% if (post.image) { %>
-    	<img src="<%= post.image().resizedUrl() %>" alt="" />
+    	<img src="<%= post.image().escape('url') %>" alt="" />
   	<% } %>
 		<div class="post-stats">
   		<span class='post-popularity'>Popularity: <%= post.escape("popularity") %></span>

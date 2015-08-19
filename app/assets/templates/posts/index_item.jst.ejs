@@ -1,7 +1,8 @@
 <h4 class='post-title'><a href="#posts/<%= post.escape("id") %>"><%= post.escape('title') %></a></h4>
 <% if (post.image) { %>
-  <img
-  src="<%= post.image().resizedUrl() %>" alt="" />
+  <a href="#posts/<%= post.escape("id") %>">
+    <img src="<%= post.image().escape('url') %>" alt="" />
+  </a>
 <% } %>
 <div class="post-stats">
   <span class='post-popularity'>Popularity: <%= post.escape("popularity") %></span>
