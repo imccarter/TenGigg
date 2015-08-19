@@ -4,7 +4,9 @@ TenGigg.Views.PostThumbsIndex = Backbone.CompositeView.extend({
   template: JST['posts/post_thumbs_index'],
 
 
-  initialize: function () {
+  initialize: function (options) {
+    this.router = options.router;
+    this.$el = options.$sideEl;
     this.addThumbViews();
     this.listenTo(this.collection, 'add', this.addThumbView);
     this.listenTo(this.collection, 'remove', this.removeThumbView);

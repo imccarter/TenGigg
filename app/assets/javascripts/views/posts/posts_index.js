@@ -7,7 +7,7 @@ TenGigg.Views.PostsIndex = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.addPostViews();
-    this.addPostThumbIndex();
+    // this.addPostThumbIndex();
     this.listenTo(this.collection, 'sync sort', this.render);
     this.listenTo(this.collection, 'add', this.addPostView);
     this.listenTo(this.collection, 'remove', this.removePostView);
@@ -35,10 +35,10 @@ TenGigg.Views.PostsIndex = Backbone.CompositeView.extend({
     this.removeModelSubview('.posts', post);
   },
 
-  addPostThumbIndex: function () {
-    var view = new TenGigg.Views.PostThumbsIndex({
-      collection: this.collection
-    });
-    this.addSubview('#thumb-index', view);
-  }
+  // addPostThumbIndex: function () {
+  //   var view = new TenGigg.Views.PostThumbsIndex({
+  //     collection: this.collection
+  //   });
+  //   this.addSubview('#thumb-index', view);
+  // }
 });
