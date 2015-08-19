@@ -16,7 +16,9 @@ window.TenGigg = {
     var posts = new TenGigg.Collections.Posts();
 
     var router = new TenGigg.Routers.Router({
-      $rootEl: $('#root'),
+      $indexEl: $('#index'),
+      $sideEl: $('#sidebar'),
+      $headerEl: $('#header'),
       posts: posts
     });
     var navbar = new TenGigg.Views.NavBarView({
@@ -33,8 +35,7 @@ window.TenGigg = {
       collection: sidePosts,
       $sideEl: $('#sidebar')
     });
-    // add sidebar, use its own collection
-    // call collection.fetch({ url: "api/posts/random" })
+
     navbar.render();
     sidebar.render();
     Backbone.history.start();
