@@ -1,4 +1,5 @@
 class Api::PostsController < ApplicationController
+
   def index
     if params[:category]
       category = Category.includes(:posts).find_by(name: params[:category])
@@ -8,16 +9,23 @@ class Api::PostsController < ApplicationController
       else
         render json: ["category does not exist"], status: 422
       end
-
-    elsif params[:user]
-      user = User.includes(:posts).find(params[:id])
+    elsif params[:user_id]
+      user = User.includes(:posts).find(params[:user_id])
       if user
-        @posts = user.all_posts
-        render :index
+        case params[:posts]
+        when "authored"
+          @posts = user.posts
+          render :index
+        when "commented"
+          @posts = user.commented_posts
+          render :index
+        when "all"
+          @posts = user.all_posts
+          render :index
+        end
       else
         render json: ["could not find user"], status: 422
       end
-
     else
       @posts = Post.order(popularity: :desc)
       render :index

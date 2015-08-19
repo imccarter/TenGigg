@@ -23,6 +23,12 @@ class User < ActiveRecord::Base
 	has_many :posts, foreign_key: :author_id, class_name: :Post
 
 	has_many :comments, foreign_key: :author_id
+	has_many(
+		:commented_posts,
+		through: :comments,
+		source: :commentable,
+		source_type: Post
+	)
 
   belongs_to :image, class_name: :Image
 
@@ -52,10 +58,8 @@ class User < ActiveRecord::Base
 	end
 
 	def all_posts
-		Post.select("posts.*").joins(<<-SQL
-			JOIN comments ON comments.commentable_id = posts.id AND comments.commentable_type = 'Post'
-		SQL
-		).where("posts.author_id = ? OR comments.author_id = ?", self.id, self.id)
+		posts + commented_posts.where("posts.author_id != ?", id)
+		# Post.select("posts.*").joins("JOIN comments ON comments.commentable_id = posts.id AND comments.commentable_type = 'Post'").where("posts.author_id = ? OR comments.author_id = ?", self.id, self.id)
 	end
 
 	private

@@ -8,7 +8,6 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     'click .recent': 'recentHandler',
     'click .navbar-brand': 'indexHandler',
     'click #compose': 'composePost',
-    // 'click #guest': 'guestLogIn'
   },
 
   initialize: function (options) {

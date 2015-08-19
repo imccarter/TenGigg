@@ -11,7 +11,6 @@ TenGigg.Views.PostIndexItem = Backbone.View.extend({
   },
 
   render: function () {
-    debugger;
     var content = this.template({ post: this.model });
     this.$el.html(content);
     return this;

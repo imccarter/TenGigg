@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 		resources :images, except: [:new, :edit]
 		resources :comments, except: [:new, :edit]
 	end
+	
 	resources :users, only: [:new, :create]
 	resource :session, only: [:create, :new, :destroy]
 end
