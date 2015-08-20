@@ -8,7 +8,6 @@ window.TenGigg = {
   initialize: function() {
     TenGigg.categories = new TenGigg.Collections.Categories();
 
-    //Is gathering all the users in a collection ok?
     TenGigg.users = new TenGigg.Collections.Users();
     TenGigg.categories.fetch();
     TenGigg.users.fetch();
@@ -28,7 +27,7 @@ window.TenGigg = {
     });
 
     var sidePosts = new TenGigg.Collections.Posts();
-    sidePosts.fetch({ url: 'api/posts/random' });
+    sidePosts.fetch({ url: '/api/posts/random' });
 
     var sidebar = new TenGigg.Views.PostThumbsIndex({
       router: router,

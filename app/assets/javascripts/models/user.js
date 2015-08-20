@@ -36,7 +36,7 @@ TenGigg.Models.User = Backbone.Model.extend({
     }
 
     if (payload.image) {
-      this.image().set(payload.image);
+      this.image().set(payload.image, { parse: true });
       delete payload.image;
     }
 

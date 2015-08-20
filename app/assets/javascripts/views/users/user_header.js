@@ -9,6 +9,10 @@ TenGigg.Views.UserHeader = Backbone.View.extend({
     'click #profile': 'handleProfile'
   },
 
+  initialize: function () {
+    this.listenTo(this.model, 'change sync', this.render);
+  },
+
   render: function () {
     var content = this.template({
       user: this.model,

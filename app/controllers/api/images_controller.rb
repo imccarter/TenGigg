@@ -15,6 +15,15 @@ class Api::ImagesController < ApplicationController
     render json: @image
   end
 
+  def update
+    @image = Image.find(params[:id])
+    if @image.update(image_params)
+      render json: @image
+    else
+      render json: @image.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
   private
   def image_params
     params.require(:image).permit(:url, :thumbnail_url, :width, :height)

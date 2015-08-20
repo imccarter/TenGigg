@@ -1,6 +1,11 @@
 <br><br>
 <div id='user-splash' class="col-md-12">
-  <h1><%= window.TenGigg.CURRENT_USER.username %></h1>
+  <% if (user.image().isNew()) { %>
+    <img src="http://res.cloudinary.com/dwds5fsan/image/upload/w_150,h_150,c_fill/v1440028989/default_dqhmax.png" alt="" />
+  <% } else { %>
+    <img src="<%= user.image().escape('url') %>" alt="" />
+  <% } %>
+  <h1><%= user.escape('username') %></h1>
   <button id="profile" type="button" class="btn btn-info">Edit Profile</button>
 </div>
 <div id='section-nav' class="col-md-12">
@@ -21,3 +26,4 @@
   <div class="col-md-4"></div>
   <div class="col-md-2"></div>
 </div>
+  <!-- <img src="http://res.cloudinary.com/dwds5fsan/image/upload/w_150,h_150,c_fill/v1440028989/default_dqhmax.png" alt="" /> -->

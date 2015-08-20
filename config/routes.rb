@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 	root to: "static_pages#root"
 
 	namespace :api, defaults: {format: :json} do
-		resources :users, only: [:index, :show]
+		resources :users, only: [:index, :show, :update]
 		resources :posts, except: [:new, :edit] do
 			get "random", to: "posts#random", on: :collection
 		end

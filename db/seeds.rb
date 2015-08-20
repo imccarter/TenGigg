@@ -30,6 +30,13 @@ guest = User.create(
   session_token: "bz1tszdqfzYP4Yr8dj8UOQ"
 )
 
+default_profile_pic = Image.create(
+  url: "http://res.cloudinary.com/dwds5fsan/image/upload/w_150,h_150,c_fill/v1440028989/default_dqhmax.png",
+  thumbnail_url: "http://res.cloudinary.com/dwds5fsan/image/upload/w_75,h_75,c_fill/v1440028989/default_dqhmax.png",
+  width: 500,
+  height: 500
+)
+
 # image1 = Image.create(
 #   url: "http://res.cloudinary.com/dwds5fsan/image/upload/v1439847620/le9gqqfkqayg7sfzqkpp.jpg",
 #   thumbnail_url: "http://res.cloudinary.com/dwds5fsan/image/upload/c_fill,h_90,w_90/v1439584002/zdbn1vwgel6orzfpdjug.jpg",

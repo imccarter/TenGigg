@@ -3,16 +3,16 @@
 TenGigg.Views.PostForm = Backbone.View.extend({
   template: JST['posts/post_form'],
 
-  initialize: function () {
-    this.image = new TenGigg.Models.Image();
-    $(document).on('keyup', this.handleKey.bind(this));
-  },
-
   events: {
     'click .upload-button': 'upload',
     'submit form': 'savePost',
     'click #close': 'closeForm',
     'click .m-background': 'closeForm'
+  },
+
+  initialize: function () {
+    this.image = new TenGigg.Models.Image();
+    $(document).on('keyup', this.handleKey.bind(this));
   },
 
   render: function () {
@@ -56,16 +56,6 @@ TenGigg.Views.PostForm = Backbone.View.extend({
     }.bind(this));
   },
 
-  formatThumbnail: function (url) {
-    var formattedThumb = url.split('/');
-    for (var i = 0; i < formattedThumb.length; i++) {
-      if (formattedThumb[i] === 'upload') {
-        formattedThumb.splice((i + 1), 1, 'w_90,h_90,c_fill');
-      }
-    }
-    return formattedThumb.join('/');
-  },
-
   formatMainImage: function (url) {
     var formattedMain = url.split('/');
     for (var i = 0; i < formattedMain.length; i++) {
@@ -76,6 +66,16 @@ TenGigg.Views.PostForm = Backbone.View.extend({
     return formattedMain.join('/');
   },
 
+  formatThumbnail: function (thumbUrl) {
+    var formattedThumb = thumbUrl.split('/');
+    for (var i = 0; i < formattedThumb.length; i++) {
+      if (formattedThumb[i] === 'upload') {
+        formattedThumb.splice((i + 1), 1, 'w_90,h_90,c_fill');
+      }
+    }
+    return formattedThumb.join('/');
+  },
+
   savePost: function(e) {
     e.preventDefault();
     var data = $(e.currentTarget).serializeJSON();
@@ -84,10 +84,9 @@ TenGigg.Views.PostForm = Backbone.View.extend({
 
     this.model.save({}, {
       success: function () {
-        // NEW VALIDATION METHOD ON POST?
         this.collection.add(this.model);
         // Backbone.history.navigate("#", { trigger: true });
-        window.location = "/";
+        // window.location = "/";
         this.remove();
       }.bind(this),
     });
