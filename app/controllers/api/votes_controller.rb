@@ -1,6 +1,6 @@
 class Api::VotesController < ApplicationController
   def create
-    @vote = current_user.votes.new(like_params)
+    @vote = current_user.votes.new(vote_params)
     if @vote.save
       render json: @vote
     else

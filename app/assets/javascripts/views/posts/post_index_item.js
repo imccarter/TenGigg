@@ -17,14 +17,14 @@ TenGigg.Views.PostIndexItem = Backbone.View.extend({
   },
 
   toggleVote: function (e) {
-    debugger;
+    // debugger;
     var score;
     if ($(e.currentTarget).attr('name') === 'upvote') {
       score = 1;
     } else {
       score = -1;
     }
-    if (this.model.isVoted()){
+    if (!this.model.isVoted()){
       this.handleVote(score);
     } else {
       this.model.vote().destroy();
