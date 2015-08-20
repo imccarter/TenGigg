@@ -14,6 +14,15 @@ class Api::VotesController < ApplicationController
     render json: @vote
   end
 
+  def update
+    @vote = current_user.votes.find(params[:id])
+    if @vote.update(vote_params)
+      render json: @vote
+    else
+      render json: @vote.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
   private
   def vote_params
     params.require(:vote).permit(:post_id, :vote_score)

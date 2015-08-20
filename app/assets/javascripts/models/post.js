@@ -7,6 +7,17 @@ TenGigg.Models.Post = Backbone.Model.extend({
     return !this.vote().isNew();
   },
 
+  setScore: function (value) {
+    this._score = value;
+  },
+
+  score: function () {
+    if (!this._score) {
+      this._score = 0;
+    }
+    return this._score;
+  },
+
   image: function () {
     if (!this._image) {
       this._image = new TenGigg.Models.Image();
@@ -49,7 +60,7 @@ TenGigg.Models.Post = Backbone.Model.extend({
     }
 
     if (payload.vote) {
-      this.vote().set(payload.vote);
+      this.vote().set(payload.vote[0]);
       delete payload.vote;
     }
 
@@ -69,7 +80,7 @@ TenGigg.Models.Post = Backbone.Model.extend({
     }
 
     if (payload.score) {
-      this.score = payload.score;
+      this.setScore(payload.score);
       delete payload.score;
     }
 

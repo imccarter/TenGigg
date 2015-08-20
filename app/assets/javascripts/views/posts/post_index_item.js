@@ -12,31 +12,48 @@ TenGigg.Views.PostIndexItem = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, 'sync change', this.render);
-    this.listenTo(this.model.vote(), 'change add remove', this.render);
+    this.listenTo(this.model.vote(), 'sync destroy', this.render);
     this.listenTo(this.collection, "sync", this.render);
   },
 
   toggleVote: function (e) {
-    // debugger;
     var score;
     if ($(e.currentTarget).attr('name') === 'upvote') {
       score = 1;
     } else {
       score = -1;
     }
-    if (!this.model.isVoted()){
-      this.handleVote(score);
+    if (this.model.isVoted()) {
+      if (this.model.vote().get('vote_score') != score) {
+        this.updateVote(score);
+      } else {
+        //do nothing
+      }
     } else {
-      this.model.vote().destroy();
-      this.model.vote().clear();
+      this.handleVote(score);
     }
   },
 
   handleVote: function (score) {
-    this.model.vote().destroy();
+    var that = this;
     this.model.vote().save({
       post_id: this.model.id,
-      vote_score: score,
+      vote_score: score
+    }, {
+      success: function () {
+        that.model.setScore(that.model.score() + score);
+      }
+    });
+  },
+
+  updateVote: function (score) {
+    var that = this;
+    this.model.vote().save({
+      vote_score: score
+    }, {
+      success: function () {
+        that.model.setScore(that.model.score() + (score * 2));
+      }
     });
   },
 

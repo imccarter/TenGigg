@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 		resources :categories, only: :index
 		resources :images, except: [:new, :edit]
 		resources :comments, except: [:new, :edit]
-		resources :votes, only: [:create, :destroy]
+		resources :votes, only: [:create, :destroy, :update]
 	end
 
 	resources :users, only: [:new, :create]
