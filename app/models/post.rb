@@ -23,6 +23,14 @@ class Post < ActiveRecord::Base
 
   has_many :comments, as: :commentable
 
+  has_many :votes
+
+  def score
+    score = 0
+    self.votes.each { |vote| score += vote.vote_score }
+    score
+  end
+
   private
   def up_to_three_categories
     if self.categories.length > 3

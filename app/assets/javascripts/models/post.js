@@ -3,11 +3,22 @@
 TenGigg.Models.Post = Backbone.Model.extend({
   urlRoot: '/api/posts',
 
+  isVoted: function () {
+    return !this.vote().isNew();
+  },
+
   image: function () {
     if (!this._image) {
       this._image = new TenGigg.Models.Image();
     }
     return this._image;
+  },
+
+  vote: function () {
+    if (!this._vote) {
+      this._vote = new TenGigg.Models.Vote();
+    }
+    return this._vote;
   },
 
   categories: function () {
@@ -37,6 +48,11 @@ TenGigg.Models.Post = Backbone.Model.extend({
       delete payload.image;
     }
 
+    if (payload.vote) {
+      this.vote().set(payload.vote);
+      delete payload.vote;
+    }
+
     if (payload.categories) {
       this.categories().set(payload.categories);
       delete payload.categories;
@@ -50,6 +66,11 @@ TenGigg.Models.Post = Backbone.Model.extend({
     if (payload.comments) {
     	this.comments().set(payload.comments, { parse: true });
     	delete payload.comments;
+    }
+
+    if (payload.score) {
+      this.score = payload.score;
+      delete payload.score;
     }
 
     return payload;

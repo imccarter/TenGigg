@@ -3,6 +3,11 @@
 TenGigg.Views.PostShow = Backbone.CompositeView.extend({
   template: JST['posts/post_show'],
 
+  events: {
+    "click .upvote": "handleUpvote",
+    "click .downvote": "handleDownvote"
+  },
+
   initialize: function () {
 		this.addPostCommentForm();
 		this.addCommentViews();

@@ -16,6 +16,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// NOTES:
+//Auth form needs width over 100%?
+//Strange little underline when hovering on thumb-links, mostly overridden?
+
 //GENERAL
 
 html {
@@ -27,7 +31,6 @@ body {
   height: 100%;
   width: 98%;
   overflow-x: auto;
-  overflow-y: hidden;
 }
 
 ul {
@@ -41,7 +44,7 @@ a {
 //NAVBAR
 
 .navbar-inverse {
-	overflow-x: hidden;
+
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -103,7 +106,7 @@ a {
 div.full-page {
   padding: 40px;
   height: 100%;
-  width: 100%;
+  width: 102%;
   background-color: black;
 }
 
@@ -113,17 +116,56 @@ div.full-page {
 	font-weight: bold;
 }
 
+.post-stats {
+	padding-top: 12px;
+}
+
+.show-post-stats {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+//MAIN INDEX
+
+.post-index {
+	margin-left: 30px;
+	padding-top: 30px;
+	position: relative;
+}
+
 .post-index-item {
-	padding-bottom: 20px;
-	padding-top: 10px;
+	padding-bottom: 12px;
   border-bottom: 1px #D8D8D8;
   width: 100%;
   margin-top: 8px;
   margin-bottom: 8px;
 }
 
+ul.posts {
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 20px;
+}
+
+.post-index .posts {
+  display: block;
+  width: 100%;
+  min-width: 580px;
+  margin: 20px;
+  border-right: 1px solid #D8D8D8;
+}
+
+.index-item-bumper {
+	padding-top: 1px;
+	height: 10px;
+	width: 600px;
+	border-bottom: 1px solid #D8D8D8;
+	z-index: 2;
+}
+
 .post-popularity {
   font-size: 12px;
+	padding-left: 30px;
 }
 
 .post-comments {
@@ -152,33 +194,8 @@ li.post-thumb-item {
 	display: inline-block;
 }
 
-//MAIN INDEX
-
-.post-index {
-	margin-left: 30px;
-	position: relative;
-}
-
-ul.posts {
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-top: 20px;
-}
-
-.post-index .posts {
-  display: block;
-  width: 100%;
-  min-width: 580px;
-  margin: 20px;
-  border-right: 1px solid #D8D8D8;
-}
-
-.index-item-bumper {
-	padding-top: 20px;
-	height: 10px;
-	width: 600px;
-	border-bottom: 1px solid #D8D8D8;
-	z-index: 2;
+.thumb-post-anchor:hover {
+	text-decoration: none;
 }
 
 //POST FORM MODAL
@@ -264,7 +281,6 @@ ul.category-select {
   height: 50px;
   background-color: white;
   border-bottom: 1px solid #D8D8D8;
-  overflow: auto;
 }
 
 #section-nav ul.navbar-nav > li {

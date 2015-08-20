@@ -30,6 +30,9 @@ class User < ActiveRecord::Base
 		source_type: Post
 	)
 
+	has_many :votes
+	has_many :voted_posts, through: :votes, source: :post
+
   belongs_to :image, class_name: :Image
 
 	def self.generate_token
