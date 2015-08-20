@@ -25,6 +25,9 @@ html {
 body {
   font-family: 'Verdana';
   height: 100%;
+  width: 98%;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 ul {
@@ -36,6 +39,10 @@ a {
 }
 
 //NAVBAR
+
+.navbar-inverse {
+	overflow-x: hidden;
+}
 
 .navbar-inverse .navbar-nav > li > a {
   color: white;
@@ -130,11 +137,27 @@ ul.post-thumbs {
 	padding-top: 70px;
 }
 
-.thumb-post-title {
+li.post-thumb-item {
+	border: 1px solid #D8D8D8;
+	max-width: 350px;
+}
 
+.thumb-image {
+	padding: 10px;
+	display: inline-block;
+}
+
+.thumb-post-title {
+	font-weight: bold;
+	display: inline-block;
 }
 
 //MAIN INDEX
+
+.post-index {
+	margin-left: 30px;
+	position: relative;
+}
 
 ul.posts {
   padding-left: 8px;
@@ -145,6 +168,7 @@ ul.posts {
 .post-index .posts {
   display: block;
   width: 100%;
+  min-width: 580px;
   margin: 20px;
   border-right: 1px solid #D8D8D8;
 }
@@ -240,6 +264,7 @@ ul.category-select {
   height: 50px;
   background-color: white;
   border-bottom: 1px solid #D8D8D8;
+  overflow: auto;
 }
 
 #section-nav ul.navbar-nav > li {
