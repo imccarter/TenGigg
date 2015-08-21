@@ -47,7 +47,7 @@ TenGigg.Views.PostForm = Backbone.View.extend({
       });
       this.image.save({}, {
         success: function (image) {
-          // this.model.set({image_id: image.get('id'), image: image});//check if necessary
+          this.model.set({ image_id: image.id });
           this.$('.thumb-container').empty();
           this.$('.thumb-container').append(
             "<img src='" + image.escape('thumbnail_url') + "' alt='thumb' />"

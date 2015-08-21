@@ -1,7 +1,6 @@
 /* global TenGigg */
 
 TenGigg.Views.PostsIndex = Backbone.CompositeView.extend({
-
   template: JST['posts/main_index'],
   className: 'post-index',
 

@@ -5,9 +5,9 @@ TenGigg.Collections.Posts = Backbone.Collection.extend({
 
   // comparator: function (a, b) {
   //   // debugger;
-  //   if (a.score() > b.score()) {
+  //   if (a.score > b.score) {
   //     return -1;
-  //   } else if (a.score() < b.score()) {
+  //   } else if (a.score < b.score) {
   //     return 1;
   //   } else {
   //     return 0;
