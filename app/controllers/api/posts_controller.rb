@@ -36,6 +36,30 @@ class Api::PostsController < ApplicationController
     render :index
   end
 
+  def user_posts
+    if params[:user_id]
+      user = User.find(params[:user_id])
+    else
+      user = current_user
+    end
+
+    if !user
+      render json: ["could not find user"], status: 422
+      return
+    end
+
+    case params[:posts]
+    when "authored"
+      @posts = user.posts
+    when "commented"
+      @posts = user.commented_posts
+    else
+      @posts = user.all_posts
+    end
+
+    render :index
+  end
+
   def random
     @posts = Post.all.sample(10)
     render :index

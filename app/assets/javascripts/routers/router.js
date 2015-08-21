@@ -13,9 +13,9 @@ TenGigg.Routers.Router = Backbone.Router.extend({
     "": "index",
     "recent": "recent",
     ":category/posts": "category",
-    "profile": "profile",
+    "profile(/:posts)": "profile",
     "posts/:id": "postShow",
-    "users/:id": "userShow"
+    "users/:id(/:posts)": "userShow"
   },
 
   index: function () {
@@ -28,7 +28,7 @@ TenGigg.Routers.Router = Backbone.Router.extend({
   },
 
   recent: function () {
-    
+
   },
 
   postShow: function (id) {
@@ -42,13 +42,25 @@ TenGigg.Routers.Router = Backbone.Router.extend({
     this._swapView(showView, this.$indexEl);
   },
 
-  profile: function () {
+  profile: function (postsType) {
+    this.userShow(window.TenGigg.CURRENT_USER.id, postsType);
+  },
+
+  userShow: function (id, postsType) {
     var user = TenGigg.users.getOrFetch(window.TenGigg.CURRENT_USER.id);
-    var posts = user.posts();
+
     var comments = user.comments();
+    var posts = new TenGigg.Collections.Posts();
+    posts.fetch({
+      url: "api/posts/user_posts",
+      data: {
+        posts: postsType,
+        user_id: id
+      }
+    });
     this.headerView = new TenGigg.Views.UserHeader({
       model: user,
-      collection: posts,
+      // collection: posts,
       comments: comments
     });
     var showView = new TenGigg.Views.UserShow({
@@ -62,13 +74,6 @@ TenGigg.Routers.Router = Backbone.Router.extend({
 
     this.$headerEl.html(this.headerView.$el);
     this.headerView.render();
-  },
-
-  userShow: function (id) {
-    var otherUser = TenGigg.users.getOrFetch(id);
-    var posts = otherUser.posts();
-    var comments = otherUser.comments();
-    //STILL OBVIOUSLY UNDER CONSTRUCTION...
   },
 
   category: function (category) {

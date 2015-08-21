@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 	namespace :api, defaults: {format: :json} do
 		resources :users, only: [:index, :show, :update]
 		resources :posts, except: [:new, :edit] do
+			get "user_posts", to: "posts#user_posts", on: :collection
 			get "random", to: "posts#random", on: :collection
 		end
 		resources :categories, only: :index

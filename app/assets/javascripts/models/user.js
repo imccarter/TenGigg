@@ -10,19 +10,19 @@ TenGigg.Models.User = Backbone.Model.extend({
     return this._posts;
   },
 
-  allPosts: function () {
-    if (!this._allPosts) {
-      this._allPosts = new TenGigg.Collections.Posts();
-    }
-    return this._allPosts;
-  },
-
-  commentedPosts: function () {
-    if (!this._commentedPosts) {
-      this._commentedPosts = new TenGigg.Collections.Posts();
-    }
-    return this._commentedPosts;
-  },
+  // allPosts: function () {
+  //   if (!this._allPosts) {
+  //     this._allPosts = new TenGigg.Collections.Posts();
+  //   }
+  //   return this._allPosts;
+  // },
+  //
+  // commentedPosts: function () {
+  //   if (!this._commentedPosts) {
+  //     this._commentedPosts = new TenGigg.Collections.Posts();
+  //   }
+  //   return this._commentedPosts;
+  // },
 
   comments: function () {
     if (!this._comments) {
@@ -40,23 +40,23 @@ TenGigg.Models.User = Backbone.Model.extend({
 
   parse: function (payload) {
 
-    if (payload.all_posts) {
-      this.allPosts().set(payload.all_posts);
-      // delete payload.all_posts;
-    }
+    // if (payload.all_posts) {
+    //   this.allPosts().set(payload.all_posts, { parse: true });
+    //   delete payload.all_posts;
+    // }
 
     if (payload.posts) {
       this.posts().set(payload.posts, { parse: true });
-      // delete payload.posts;
+      delete payload.posts;
     }
 
-    if (payload.commented_posts) {
-      this.commentedPosts().set(payload.commented_posts);
-      // delete payload.commented_posts;
-    }
+    // if (payload.commented_posts) {
+    //   this.commentedPosts().set(payload.commented_posts, { parse: true });
+    //   delete payload.commented_posts;
+    // }
 
     if (payload.comments) {
-      this.comments().set(payload.comments);
+      this.comments().set(payload.comments, { parse: true });
       delete payload.comments;
     }
 
