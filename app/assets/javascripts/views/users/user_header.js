@@ -31,30 +31,47 @@ TenGigg.Views.UserHeader = Backbone.View.extend({
   },
 
   handleAllPosts: function () {
-    this.collection.fetch({
-      data: {
-        posts: "all",
-        user_id: this.model.id
-      }
-    });
+    this.collection.set(this.model.get('all_posts'));
+    this.collection.fetch();
+
+    // this.model.allPosts();
+
+    // this.collection.fetch({
+    //   data: {
+    //     posts: "all",
+    //     user_id: this.model.id
+    //   }
+    // });
   },
 
   handlePosts: function () {
-    this.collection.fetch({
-      data: {
-        posts: "authored",
-        user_id: this.model.id
-      }
-    });
+    this.collection.set(this.model.get('posts'));
+    this.collection.fetch();
+
+    // this.model.posts();
+
+    // this.collection.fetch({
+    //   data: {
+    //     posts: "authored",
+    //     user_id: this.model.id
+    //   }
+    // });
   },
 
   handleCommented: function () {
-    this.collection.fetch({
-      data: {
-        posts: "commented",
-        user_id: this.model.id
-      }
-    });
+    // debugger;
+    this.collection.fetch();
+    this.collection.set(this.model.get('commented_posts'));
+
+
+    // this.model.commentedPosts();
+
+    // this.collection.fetch({
+    //   data: {
+    //     posts: "commented",
+    //     user_id: this.model.id
+    //   }
+    // });
   }
 
 });

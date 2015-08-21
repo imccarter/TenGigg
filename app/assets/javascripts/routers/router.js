@@ -11,6 +11,7 @@ TenGigg.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "": "index",
+    "recent": "recent",
     ":category/posts": "category",
     "profile": "profile",
     "posts/:id": "postShow",
@@ -24,6 +25,10 @@ TenGigg.Routers.Router = Backbone.Router.extend({
       collection: this.collection
     });
     this._swapView(indexView, this.$indexEl);
+  },
+
+  recent: function () {
+    
   },
 
   postShow: function (id) {

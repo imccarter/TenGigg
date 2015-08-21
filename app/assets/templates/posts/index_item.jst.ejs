@@ -6,14 +6,12 @@
 <% } %>
 <div class="post-stats">
   <!-- Vote buttons -->
-  <span><button type="button" class="btn btn-success upvote" name="upvote">
-    <span class='glyphicon glyphicon-arrow-up'></span>
-  </button></span>
-  <span><button type="button" class="btn btn-danger downvote" name="downvote">
-    <span class='glyphicon glyphicon-arrow-down'></span>
-  </button></span>
+  <button type="button" class="btn btn-success upvote" name="upvote">
+    <span class='glyphicon glyphicon-arrow-up'></span></button>
+  <button type="button" class="btn btn-danger downvote" name="downvote">
+    <span class='glyphicon glyphicon-arrow-down'></span></button>
 
-  <span class='post-popularity'>Popularity: <%= post.score() %></span>
+  <span class='post-popularity'>Points: <%= post.score() %></span>
   <span class='post-comments'>Comments: <%= post.comments().length %></span>
 </div>
 <div class='index-item-bumper'></div>

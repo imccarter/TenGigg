@@ -9,24 +9,30 @@ class Api::PostsController < ApplicationController
         render json: ["category does not exist"], status: 422
       end
 
-    elsif params[:user_id]
-      user = User.includes(:posts).find(params[:user_id])
-      if user
-        case params[:posts]
-        when "authored"
-          @posts = user.posts
-        when "commented"
-          @posts = user.commented_posts
-        when "all"
-          @posts = user.all_posts
-        end
-      else
-        render json: ["could not find user"], status: 422
-      end
-
+    # elsif params[:user_id]
+    #   user = User.includes(:posts).find(params[:user_id])
+    #   if user
+    #     case params[:posts]
+    #     when "authored"
+    #       @posts = user.posts
+    #     when "commented"
+    #       @posts = user.commented_posts
+    #     when "all"
+    #       @posts = user.all_posts
+    #     end
+    #   else
+    #     render json: ["could not find user"], status: 422
+    #   end
     else
-      @posts = Post.order(popularity: :desc)
+      @posts = Post.all
     end
+    #
+    # if params[:recent]
+    #   @posts = @posts.order(created_at: :desc)
+    # else
+    #   @posts = @posts.includes(:votes).sort { |p| 0 - p.score }
+    # end
+
     render :index
   end
 

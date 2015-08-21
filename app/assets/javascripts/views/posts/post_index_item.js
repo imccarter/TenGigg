@@ -7,13 +7,30 @@ TenGigg.Views.PostIndexItem = Backbone.View.extend({
 
   events: {
     "click .upvote": "toggleVote",
-    "click .downvote": "toggleVote"
+    "click .downvote": "toggleVote",
   },
 
   initialize: function () {
     this.listenTo(this.model, 'sync change', this.render);
-    this.listenTo(this.model.vote(), 'sync destroy', this.render);
+    this.listenTo(this.model.vote(), 'sync change', this.render);
     this.listenTo(this.collection, "sync", this.render);
+  },
+
+  render: function () {
+    var content = this.template({ post: this.model });
+    this.$el.html(content);
+    this.setButtons();
+    return this;
+  },
+
+  setButtons: function () {
+    if (this.model.isVoted() && this.model.vote().get('vote_score') === 1) {
+      this.$('.downvote').removeClass('active');
+      this.$('.upvote').addClass('active');
+    } else if (this.model.isVoted() && this.model.vote().get('vote_score') === -1) {
+      this.$('.upvote').removeClass('active');
+      this.$('.downvote').addClass('active');
+    }
   },
 
   toggleVote: function (e) {
@@ -47,6 +64,7 @@ TenGigg.Views.PostIndexItem = Backbone.View.extend({
   },
 
   updateVote: function (score) {
+
     var that = this;
     this.model.vote().save({
       vote_score: score
@@ -55,11 +73,5 @@ TenGigg.Views.PostIndexItem = Backbone.View.extend({
         that.model.setScore(that.model.score() + (score * 2));
       }
     });
-  },
-
-  render: function () {
-    var content = this.template({ post: this.model });
-    this.$el.html(content);
-    return this;
   }
 });

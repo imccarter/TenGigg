@@ -18,7 +18,7 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
   },
 
   indexHandler: function () {
-    this.collection.reOrder('popularity');
+    this.collection.sort();
   },
 
   recentHandler: function () {
