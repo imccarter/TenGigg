@@ -18,6 +18,13 @@ category_list.each do |category_name|
   Category.create(name: category_name)
 end
 
+default_profile_pic = Image.create(
+  url: "http://res.cloudinary.com/dwds5fsan/image/upload/w_150,h_150,c_fill/v1440028989/default_dqhmax.png",
+  thumbnail_url: "http://res.cloudinary.com/dwds5fsan/image/upload/w_75,h_75,c_fill/v1440028989/default_dqhmax.png",
+  width: 500,
+  height: 500
+)
+
 user = User.create(
   username: "Demo User",
   password_digest: "$2a$10$Ur.Oi2bJWfC3kf38CI8Up.VTtCHifYokRxbrxY/UWttFWN1MksPB6",
@@ -30,12 +37,6 @@ guest = User.create(
   session_token: "bz1tszdqfzYP4Yr8dj8UOQ"
 )
 
-default_profile_pic = Image.create(
-  url: "http://res.cloudinary.com/dwds5fsan/image/upload/w_150,h_150,c_fill/v1440028989/default_dqhmax.png",
-  thumbnail_url: "http://res.cloudinary.com/dwds5fsan/image/upload/w_75,h_75,c_fill/v1440028989/default_dqhmax.png",
-  width: 500,
-  height: 500
-)
 
 # image1 = Image.create(
 #   url: "http://res.cloudinary.com/dwds5fsan/image/upload/v1439847620/le9gqqfkqayg7sfzqkpp.jpg",
@@ -51,11 +52,11 @@ default_profile_pic = Image.create(
 #   height: 600
 # )
 #
-# post1 = Post.create(title: "THE UNICORN", author_id: 1, image: image1, image_id: image1.id, popularity: 3,
+# post1 = Post.create(title: "THE UNICORN", author_id: 1, image: image1, image_id: image1.id,
 #   categories: [Category.find(2), Category.find(3)])
 #
 #
-# post2 = Post.create(title: "This tree", author_id: 2, image: image2, image_id: image2.id, popularity: -2,
+# post2 = Post.create(title: "This tree", author_id: 2, image: image2, image_id: image2.id,
 #   categories: [Category.find(3), Category.find(4), Category.find(6)])
 #
 # comment1 = Comment.create(body: "Shockingly beautiful.", author_id: 1, commentable_id: 1, commentable_type: "Post")

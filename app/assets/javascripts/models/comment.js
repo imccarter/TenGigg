@@ -12,7 +12,7 @@ TenGigg.Models.Comment = Backbone.Model.extend({
 
   parse: function (payload) {
     if (payload.author) {
-      this.author().set(payload.author);
+      this.author().set(this.author().parse(payload.author));
       delete payload.author;
     }
 

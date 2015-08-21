@@ -16,7 +16,7 @@ class Api::CommentsController < ApplicationController
     @comment.commentable_type = params[:commentable_type]
 
     if @comment.save
-      render json: @comment
+      render :show
     else
       render json: @comment.errors.full_messages, status: :unprocessable_entity
     end

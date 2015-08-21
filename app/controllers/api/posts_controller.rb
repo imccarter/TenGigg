@@ -76,7 +76,7 @@ class Api::PostsController < ApplicationController
     @post.category_ids = params[:category_ids]
 
     if @post.save
-      render json: @post
+      render :show
     else
       render json: @post.errors.full_messages, status: :unprocessable_entity
     end
@@ -84,6 +84,6 @@ class Api::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :popularity, :image_id, :category_ids => [])
+    params.require(:post).permit(:title, :image_id, :category_ids => [])
   end
 end

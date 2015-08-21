@@ -6,7 +6,8 @@ TenGigg.Views.Comment = Backbone.View.extend({
   initialize: function () {
     // this.model.author();
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.model.author(), 'change:username', this.render);
+    this.listenTo(this.model.author(), 'change', this.render);
+    this.listenTo(this.model.author().image(), 'all', this.render);
     // this.listenTo(this.model.author(), 'all', this.test);
   },
 

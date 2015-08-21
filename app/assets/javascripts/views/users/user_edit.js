@@ -43,6 +43,9 @@ TenGigg.Views.UserEdit = Backbone.View.extend({
       success: function () {
 
         this.remove();
+      }.bind(this),
+      error: function (XHR, response) {
+        this.$('.error').append(response.responseJSON);
       }.bind(this)
     });
   },
@@ -53,6 +56,9 @@ TenGigg.Views.UserEdit = Backbone.View.extend({
     cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, function(error, result) {
       if (result) {
         var data = result[0];
+        if (this.image.id === 1) {
+          this.image = new TenGigg.Models.Image();
+        }
         this.image.set({
           url: this.formatProfilePic(data.url),
           thumbnail_url: this.formatCommentPic(data.thumbnail_url),
@@ -61,13 +67,15 @@ TenGigg.Views.UserEdit = Backbone.View.extend({
         });
         this.image.save({}, {
           success: function (image) {
+            this.$('.thumb-container').empty();
             this.$('.thumb-container').append(
               "<img src='" + image.escape('thumbnail_url') + "' alt='thumb' />"
             );
           }.bind(this),
+          error: function (XHR, response) {
+            this.$('.error').append(response.responseJSON);
+          }.bind(this)
         });
-      } else {
-        //NOTHING HAPPENS, ADD ERROR?
       }
     }.bind(this));
   },

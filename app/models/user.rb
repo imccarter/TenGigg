@@ -35,6 +35,12 @@ class User < ActiveRecord::Base
 
   belongs_to :image, class_name: :Image
 
+	before_save :set_default_image
+
+	def set_default_image
+		self.image ||= Image.first
+	end
+
 	def self.generate_token
 		SecureRandom.urlsafe_base64(16)
 	end

@@ -1,6 +1,6 @@
 <div class="comment">
   <div class="author-image">
-    <%= author %>
+    <img src="<%= comment.author().image().escape('thumbnail_url') %>" />
   </div>
   <div class="comment-author">
     <%= author.escape('username') %>:

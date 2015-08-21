@@ -58,19 +58,16 @@ TenGigg.Views.PostIndexItem = Backbone.View.extend({
       vote_score: score
     }, {
       success: function () {
-        that.model.setScore(that.model.score() + score);
+        that.model.set('score', that.model.get('score') + score);
       }
     });
   },
 
   updateVote: function (score) {
-
     var that = this;
-    this.model.vote().save({
-      vote_score: score
-    }, {
+    this.model.vote().save({ vote_score: score }, {
       success: function () {
-        that.model.setScore(that.model.score() + (score * 2));
+        that.model.set('score', that.model.get('score') + (score * 2));
       }
     });
   }

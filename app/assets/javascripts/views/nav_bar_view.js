@@ -18,7 +18,7 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
   },
 
   indexHandler: function () {
-    this.collection.sort();
+    this.collection.reOrder('score');
   },
 
   recentHandler: function () {
@@ -47,7 +47,8 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
       success: function() {
         window.TenGigg.CURRENT_USER.username = "Account";
         this.render();
-        Backbone.history.navigate('#', { trigger: true });
+        window.location.replace('/');
+        // Backbone.history.navigate('#', { trigger: true });
       }.bind(this)
     });
   },

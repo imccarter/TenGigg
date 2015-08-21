@@ -7,7 +7,6 @@ TenGigg.Views.PostsIndex = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.addPostViews();
-    // this.addPostThumbIndex();
     this.listenTo(this.collection, 'sync sort', this.render);
     this.listenTo(this.collection, 'add', this.addPostView);
     this.listenTo(this.collection, 'remove', this.removePostView);

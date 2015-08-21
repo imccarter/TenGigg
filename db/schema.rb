@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820162505) do
+ActiveRecord::Schema.define(version: 20150821181258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,11 +57,10 @@ ActiveRecord::Schema.define(version: 20150820162505) do
   add_index "post_categories", ["post_id"], name: "index_post_categories_on_post_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
-    t.integer  "author_id",              null: false
-    t.string   "title",                  null: false
-    t.integer  "popularity", default: 0, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "author_id",  null: false
+    t.string   "title",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "image_id"
   end
 

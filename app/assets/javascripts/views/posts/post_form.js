@@ -47,11 +47,15 @@ TenGigg.Views.PostForm = Backbone.View.extend({
       });
       this.image.save({}, {
         success: function (image) {
-          post.set({image_id: image.get('id')});
+          // this.model.set({image_id: image.get('id'), image: image});//check if necessary
+          this.$('.thumb-container').empty();
           this.$('.thumb-container').append(
             "<img src='" + image.escape('thumbnail_url') + "' alt='thumb' />"
           );
         }.bind(this),
+        error: function (XHR, response) {
+          this.$('.error').append(response.responseJSON);
+        }
       });
     }.bind(this));
   },
@@ -81,7 +85,6 @@ TenGigg.Views.PostForm = Backbone.View.extend({
     var data = $(e.currentTarget).serializeJSON();
 
     this.model.set(data);
-
     this.model.save({}, {
       success: function () {
         this.collection.add(this.model);
@@ -89,6 +92,9 @@ TenGigg.Views.PostForm = Backbone.View.extend({
         // window.location = "/";
         this.remove();
       }.bind(this),
+      error: function (XHR, response) {
+        this.$('.error').append(response.responseJSON);
+      }.bind(this)
     });
   },
 });

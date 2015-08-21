@@ -94,7 +94,8 @@ a {
   display: inline-block;
   text-align: center;
   width: 25%;
-  height: 200px;
+  height: 250px;
+	min-height: auto;
   border: 1px solid gray;
   border-radius: 5%;
   margin: 30px;
@@ -131,6 +132,10 @@ div.full-page {
 	margin-left: 30px;
 	padding-top: 30px;
 	position: relative;
+}
+
+.post-stats {
+	width: 350px;
 }
 
 .post-index-item {
@@ -223,12 +228,12 @@ ul.category-select {
 }
 
 .m-content {
-  position: absolute;
+  position: fixed;
   overflow-y: auto;
   background-color: white;
   border-radius: 5px;
   padding: 2pc;
-  border: 1px solid;
+  border: 2px solid;
   z-index: 99;
   top: 50%;
   left: 50%;

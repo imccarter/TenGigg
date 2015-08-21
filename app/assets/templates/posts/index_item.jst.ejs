@@ -1,7 +1,7 @@
 <h4 class='post-title'><a href="#posts/<%= post.escape("id") %>"><%= post.escape('title') %></a></h4>
 <% if (post.image) { %>
   <a href="#posts/<%= post.escape("id") %>">
-    <img src="<%= post.image().escape('url') %>" alt="" />
+    <img src="<%= post.image().escape('url') %>"/>
   </a>
 <% } %>
 <div class="post-stats">
@@ -11,7 +11,7 @@
   <button type="button" class="btn btn-danger downvote" name="downvote">
     <span class='glyphicon glyphicon-arrow-down'></span></button>
 
-  <span class='post-popularity'>Points: <%= post.score() %></span>
+  <span class='post-popularity'>Points: <%= post.escape('score') %></span>
   <span class='post-comments'>Comments: <%= post.comments().length %></span>
 </div>
 <div class='index-item-bumper'></div>

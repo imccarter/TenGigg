@@ -16,6 +16,20 @@ TenGigg.Views.PostShow = Backbone.CompositeView.extend({
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.collection, 'add', this.addCommentView);
     this.listenTo(this.collection, 'remove', this.removeCommentView);
+    this.listenTo(this.model, 'sync', this.changeCurrentUserComments);
+  },
+
+  changeCurrentUserComments: function () {
+    this.collection.each(function (model) {
+      if (model.author_id === TenGigg.CURRENT_USER.id) {
+        var i = that.subviews.findIndex(function (subview) {
+          return subview.model === model;
+        });
+        if (i !== -1) {
+          that.subviews[i].model.set(model.attributes);
+        }
+      }
+    }.bind(this));
   },
 
   render: function () {
