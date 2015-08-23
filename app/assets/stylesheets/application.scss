@@ -29,8 +29,8 @@ html {
 body {
   font-family: 'Verdana';
   height: 100%;
-  width: 98%;
-  overflow-x: auto;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 ul {
@@ -86,29 +86,32 @@ a {
 
 //AUTH STUFF
 
-.form-container {
-  text-align: center;
-}
 
 .auth-form {
   display: inline-block;
   text-align: center;
   width: 25%;
-  height: 250px;
+  min-width: 260px;
+  height: 270px;
 	min-height: auto;
-  border: 1px solid gray;
-  border-radius: 5%;
+  border-radius: 10%;
   margin: 30px;
   padding-left: 15px;
   padding-right: 15px;
-  background-color: white;
+  background-color: rgba(0,0,0,0.6);
+  color: #D6D6D6;
 }
 
 div.full-page {
   padding: 40px;
   height: 100%;
-  width: 102%;
+  width: 100%;
+  background-image: url(http://res.cloudinary.com/dwds5fsan/image/upload/v1440300800/o-GREAT-GATSBY-TRAILER-facebook-1_aec9ie.jpg);
   background-color: black;
+}
+
+div#notice {
+	padding-top: 8px;
 }
 
 //POST STUFF, INDEX + SHOW
@@ -178,14 +181,15 @@ ul.posts {
   padding-left: 30px;
 }
 
-//THUMB INDEX
+//THUMB INDEX/SIDEBAR
 
 ul.post-thumbs {
 	padding-top: 70px;
+	position: relative;
 }
 
 li.post-thumb-item {
-	border: 1px solid #D8D8D8;
+	border-bottom: 1px solid #D8D8D8;
 	max-width: 350px;
 }
 
@@ -247,7 +251,7 @@ ul.category-select {
 // COMMENTS
 
 .comments-container {
-  width: 58%;
+  width: 85%;
 }
 
 .submit-comment {
@@ -256,6 +260,27 @@ ul.category-select {
 
 .comment-field {
   width: 75%;
+}
+
+.author-image {
+	float: left;
+	padding-right: 10px;
+}
+
+.comment-author {
+	float: left;
+	font-weight: bold;
+	padding-right: 8px;
+}
+
+.comment-body {
+	font-size: 14px;
+}
+
+li.comment {
+	max-width: 350px;
+	padding-bottom: 0;
+	min-height: 90px;
 }
 
 .comments {
@@ -267,11 +292,6 @@ ul.category-select {
   color: #0009BA;
 }
 
-.comment-body {
-  font-size: 14px;
-  padding-bottom: 20px;
-}
-
 // USER PROFILE
 
 #user-splash {
@@ -280,6 +300,7 @@ ul.category-select {
   text-align: center;
   color: white;
 	padding-top: 45px;
+  overflow-x: hidden; 
 }
 
 #section-nav {

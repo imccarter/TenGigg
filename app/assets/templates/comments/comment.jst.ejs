@@ -1,11 +1,10 @@
-<div class="comment">
-  <div class="author-image">
-    <img src="<%= comment.author().image().escape('thumbnail_url') %>" />
-  </div>
-  <div class="comment-author">
-    <%= author.escape('username') %>:
-  </div>
-  <div class="comment-body">
-    <%= comment.escape('body') %>
-  </div>
+<div class="author-image">
+  <img src="<%= comment.author().image().escape('thumbnail_url') %>" />
 </div>
+<span class="comment-author">
+  <%= author.escape('username') %>:
+</span>
+<div class="comment-body">
+  <%= comment.escape('body') %>
+</div>
+<br>

@@ -24,7 +24,7 @@ TenGigg.Routers.Router = Backbone.Router.extend({
     var indexView = new TenGigg.Views.PostsIndex({
       collection: this.collection
     });
-    this._swapView(indexView, this.$indexEl);
+    this._swapView(indexView);
   },
 
   recent: function () {
@@ -39,7 +39,7 @@ TenGigg.Routers.Router = Backbone.Router.extend({
       model: post,
       collection: comments
     });
-    this._swapView(showView, this.$indexEl);
+    this._swapView(showView);
   },
 
   profile: function (postsType) {
@@ -59,15 +59,15 @@ TenGigg.Routers.Router = Backbone.Router.extend({
       }
     });
     this.headerView = new TenGigg.Views.UserHeader({
-      model: user,
-      // collection: posts,
-      comments: comments
+      model: user
     });
     var showView = new TenGigg.Views.UserShow({
       model: user,
       collection: posts,
       comments: comments
     });
+    
+    this._currentView && this._currentView.remove();
 
     this.$indexEl.html(showView.$el);
     showView.render();
@@ -83,14 +83,13 @@ TenGigg.Routers.Router = Backbone.Router.extend({
       data: { category: category }
     });
     var indexView = new TenGigg.Views.PostsIndex({ collection: posts });
-    this._swapView(indexView, this.$indexEl);
+    this._swapView(indexView);
   },
 
-  _swapView: function (view, where) {
+  _swapView: function (view) {
     this._currentView && this._currentView.remove();
-    // this.$headerEl && this.$headerEl.remove();
     this._currentView = view;
-    where.html(view.$el);
+    this.$indexEl.html(view.$el);
     view.render();
   },
 

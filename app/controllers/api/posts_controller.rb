@@ -61,7 +61,7 @@ class Api::PostsController < ApplicationController
   end
 
   def random
-    @posts = Post.all.sample(10)
+    @posts = Post.all.sample(6)
     render :index
   end
 

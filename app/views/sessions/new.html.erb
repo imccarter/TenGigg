@@ -3,7 +3,6 @@
 		<form action='<%= session_url %>' method='post' class='auth-form'>
 			<%= auth_token %>
 			<h3>Log In</h3>
-			<div id="notice"><%= flash[:errors] %></div>
 			<div class="form-group">
 				<input id='username' type='text' class='form-control' placeholder='Username'
 					aria-describedby='basic-addon1' name='user[username]'>
@@ -13,8 +12,10 @@
 				<input id='password' type='password' class='form-control' placeholder='Password'
 					aria-describedby='basic-addon1' name='user[password]'>
 			</div>
-			<input type='submit' value='Log In' class='log-in-btn'>
-			<button id='guest-log-in' name="button">Guest</button>
+			<input type='submit' value='Log In' class='btn btn-default log-in-btn'>
+			<button id='guest-log-in' name="button" class="btn btn-default">Guest</button>
+			<br>
+			<div id="notice"><%= flash[:errors] %></div>
 		</form>
 		<% unless logged_in? %>
 			<script type="text/javascript">

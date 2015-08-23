@@ -60,3 +60,63 @@ guest = User.create(
 #   categories: [Category.find(3), Category.find(4), Category.find(6)])
 #
 # comment1 = Comment.create(body: "Shockingly beautiful.", author_id: 1, commentable_id: 1, commentable_type: "Post")
+
+
+
+
+# Seed ideas:
+# ~6 demo users with names
+# ~20 posts
+# 0-4 comments per post
+# Posts:
+# 
+# Animals:
+# Cute puppy: Here's an adorable puppy you can stare at so you don't have to think about
+# the triviality of your contribution to society.
+# 
+# Cute kitten: Let's all just upvote this photo of a kitten that I just googled so I can
+# rest easy knowing that I have more internet points than some other people.
+# 
+# Weird animal: This animal is so interesting to me because any wildlife in my immediate 
+# vicinity has been ravished by decades of human negligence!
+# 
+# Endangered animal: Rather than actually trying to do something about it, I'm going
+# to feel better about myself by "raising awareness" about this poor animal's plight.
+# 
+# Sloth (thumbs upping?): Charismatic megafauna always get the upvotes.
+# 
+# Funny gif: My studies confirm that users desire short loops of silent low-quality
+# video of animals acting silly.
+# 
+# Media:
+# GoT meme: Apparently the target demographic of this website universally enjoys this
+# television program.
+# 
+# Use the force, Harry: Here is an in-joke with references to media that this userbase is 
+# fond of.
+# 
+# Poorly made fan-art: Hey everyone, I'm an artist! I'm going to publicly display my work
+# and then get really defensive when someone inevitably insults it!
+# 
+# Office-gif with subtitles: Because your mind can fill in the voices for you.
+# 
+# Misc:
+# Renaissance painting: I don't know why I posted this here. Move along.
+# 
+# Infographic: If you think you've learned something, you'll feel less like you're letting 
+# your life slip between your fingers as you waste countless hours browsing the internet.
+# 
+# First-world-problem: There's no way that bemoaning a minor grievance common to most people 
+# in a developed nation can get downvoted on the internet!
+# 
+# earth-porn: Maybe if you stare long enough without blinking you can trick your brain into
+# thinking that you're actually there and doing something with your life.
+# 
+# Motivational image: Well, this just seems counterintuitive to post if we want people
+# to actually stay on this site.
+# 
+# Inspirational quote: Because someone famous said it, it carries more meaning.
+#
+# Stick-figure gif: How long do people spend making these animations with the only obvious
+# gain of stoking their internet ego?
+
