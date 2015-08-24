@@ -43,10 +43,6 @@ a {
 
 //NAVBAR
 
-.navbar-inverse {
-
-}
-
 .navbar-inverse .navbar-nav > li > a {
   color: white;
 }
@@ -181,6 +177,15 @@ ul.posts {
   padding-left: 30px;
 }
 
+div.page-buttons {
+	padding-left: 50px;
+	padding-bottom: 70px;
+}
+
+div.page-buttons .next {
+	float: right;
+}
+
 //THUMB INDEX/SIDEBAR
 
 ul.post-thumbs {
@@ -242,6 +247,10 @@ ul.category-select {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
+}
+
+.error {
+	max-width: 300px;
 }
 
 #close {

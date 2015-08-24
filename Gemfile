@@ -20,6 +20,7 @@ gem 'ejs'
 gem 'backbone-on-rails'
 gem 'bootstrap-sass'
 gem 'serialize_json-rails'
+gem 'kaminari'
 
 gem 'cloudinary'
 gem 'figaro'

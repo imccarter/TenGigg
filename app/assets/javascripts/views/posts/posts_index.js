@@ -12,7 +12,10 @@ TenGigg.Views.PostsIndex = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    this.$el.html(this.template());
+    this.$el.html(this.template({
+    	posts: this.collection,
+    	page: this.collection.page
+    }));
     this.attachSubviews();
     return this;
   },
@@ -32,11 +35,4 @@ TenGigg.Views.PostsIndex = Backbone.CompositeView.extend({
   removePostView: function (post) {
     this.removeModelSubview('.posts', post);
   },
-
-  // addPostThumbIndex: function () {
-  //   var view = new TenGigg.Views.PostThumbsIndex({
-  //     collection: this.collection
-  //   });
-  //   this.addSubview('#thumb-index', view);
-  // }
 });

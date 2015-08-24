@@ -54,7 +54,7 @@ TenGigg.Views.PostForm = Backbone.View.extend({
           );
         }.bind(this),
         error: function (XHR, response) {
-          this.$('.error').append(response.responseJSON);
+         	this.$('.error').append(response.responseJSON.join(", "));
         }
       });
     }.bind(this));
@@ -88,12 +88,13 @@ TenGigg.Views.PostForm = Backbone.View.extend({
     this.model.save({}, {
       success: function () {
         this.collection.add(this.model);
-        // Backbone.history.navigate("#", { trigger: true });
+					Backbone.history.navigate("#posts/" + this.model.id, { trigger: true });
         // window.location = "/";
         this.remove();
       }.bind(this),
       error: function (XHR, response) {
-        this.$('.error').append(response.responseJSON);
+      	this.$('.error').empty();
+        this.$('.error').append(response.responseJSON.join(", "));
       }.bind(this)
     });
   },

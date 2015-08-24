@@ -9,7 +9,7 @@ category_list = [
   "Funny",
   "Shocking",
   "Beautiful",
-  "Horrible",
+  "Informative",
   "Cute",
   "Awesome"
 ]
@@ -36,6 +36,12 @@ guest = User.create(
   password_digest: "$2a$10$Sxn33rNu7KOajKen4deAzumB.in8m1nL0DiTce2dyux97cyOh/ZDK",
   session_token: "bz1tszdqfzYP4Yr8dj8UOQ"
 )
+
+# cute_puppy = Image.create(
+# 	url:
+# 	thumnail_url:
+# )
+
 
 
 # image1 = Image.create(
@@ -75,10 +81,10 @@ guest = User.create(
 # the triviality of your contribution to society.
 # 
 # Cute kitten: Let's all just upvote this photo of a kitten that I just googled so I can
-# rest easy knowing that I have more internet points than some other people.
+# rest easy knowing that I have more internet points than you.
 # 
 # Weird animal: This animal is so interesting to me because any wildlife in my immediate 
-# vicinity has been ravished by decades of human negligence!
+# vicinity has been ravished by decades of human negligence.
 # 
 # Endangered animal: Rather than actually trying to do something about it, I'm going
 # to feel better about myself by "raising awareness" about this poor animal's plight.
@@ -90,7 +96,7 @@ guest = User.create(
 # 
 # Media:
 # GoT meme: Apparently the target demographic of this website universally enjoys this
-# television program.
+# television program. **Skip?**
 # 
 # Use the force, Harry: Here is an in-joke with references to media that this userbase is 
 # fond of.
@@ -110,7 +116,7 @@ guest = User.create(
 # in a developed nation can get downvoted on the internet!
 # 
 # earth-porn: Maybe if you stare long enough without blinking you can trick your brain into
-# thinking that you're actually there and doing something with your life.
+# thinking that you're physically there and doing something with your life.
 # 
 # Motivational image: Well, this just seems counterintuitive to post if we want people
 # to actually stay on this site.

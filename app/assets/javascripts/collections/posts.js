@@ -23,6 +23,12 @@ TenGigg.Collections.Posts = Backbone.Collection.extend({
       post.fetch();
     }
     return post;
+  },
+  
+  parse: function(payload) {
+  	this.page = payload.page;
+  	this.total_pages = payload.total_pages;
+  	return payload.models;
   }
 
 });

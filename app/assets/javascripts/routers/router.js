@@ -10,25 +10,29 @@ TenGigg.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    "": "index",
-    "recent": "recent",
+  	"(:page)": "index",
     ":category/posts": "category",
     "profile(/:posts)": "profile",
     "posts/:id": "postShow",
     "users/:id(/:posts)": "userShow"
   },
 
-  index: function () {
+  index: function (page) {
+  	if (!page) {
+  		page = 1;
+  	}
     this.headerView && this.headerView.remove();
-    this.collection.fetch();
+    this.collection.fetch({
+//     	remove: false,
+    	data: { page: page },
+    	success: function () { 
+    		this.collection.reOrder('score'); //fix to order by score on each page
+    	}.bind(this)
+    });
     var indexView = new TenGigg.Views.PostsIndex({
       collection: this.collection
     });
     this._swapView(indexView);
-  },
-
-  recent: function () {
-
   },
 
   postShow: function (id) {

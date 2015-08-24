@@ -32,8 +32,13 @@ class Api::PostsController < ApplicationController
     # else
     #   @posts = @posts.includes(:votes).sort { |p| 0 - p.score }
     # end
-
+    @posts = @posts.page(params[:page]).per(5)
     render :index
+# 		render json: {
+# 			models: @posts,
+# 			page: params[:page],
+# 			total_pages: @posts.total_pages
+# 		}
   end
 
   def user_posts

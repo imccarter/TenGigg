@@ -1,1 +1,23 @@
 <ul class='posts'></ul>
+
+<div class="page-buttons">
+	<span class="prev">
+		<% if (page > 1) { %>
+			<a href="#<%= (page * 1) - 1 %>">
+				<button type="button" class="btn btn-info prev-page">
+    			<span class='glyphicon glyphicon-chevron-left'></span>
+  			</button>
+			</a>
+		<% } %>
+	</span>
+	
+	<span class="next">
+		<% if (page < posts.total_pages) { %>
+			<a href="#<%= (page * 1) + 1 %>">
+				<button type="button" class="btn btn-info next-page">
+    			<span class='glyphicon glyphicon-chevron-right'></span>
+  			</button>
+			</a>
+		<% } %>
+	</span>
+</div>
