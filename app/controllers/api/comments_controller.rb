@@ -1,4 +1,6 @@
 class Api::CommentsController < ApplicationController
+  before_action :require_log_in
+  
   def show
     @comment = Comment.find(params[:id])
     render :show

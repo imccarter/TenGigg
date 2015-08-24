@@ -22,6 +22,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_log_in
-  	redirect_to 'static_pages#root' unless logged_in?
+  	render :status => :forbidden, :text => "That action is forbidden." unless logged_in?
   end
 end

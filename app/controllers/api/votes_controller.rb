@@ -1,4 +1,6 @@
 class Api::VotesController < ApplicationController
+  before_action :require_log_in
+  
   def create
     @vote = current_user.votes.new(vote_params)
     if @vote.save

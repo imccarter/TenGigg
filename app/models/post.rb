@@ -12,7 +12,7 @@
 
 class Post < ActiveRecord::Base
   validates :author_id, :title, presence: true
-  validates :title, length: { minimum: 2, maximum: 100 }
+  validates :title, length: { minimum: 2, maximum: 264 }
 
   validate :up_to_three_categories, on: :create
   belongs_to :author, class_name: :User

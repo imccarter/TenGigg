@@ -1,4 +1,6 @@
 class Api::UsersController < ApplicationController
+	before_action :require_log_in, except: [:index]
+	
 	def show
 		@user = User.find(params[:id])
 		render :show
@@ -6,7 +8,7 @@ class Api::UsersController < ApplicationController
 
 	def index
 		@users = User.all
-		render json: @users
+		render :index
 	end
 
 	def update

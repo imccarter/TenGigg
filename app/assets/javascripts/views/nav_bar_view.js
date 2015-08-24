@@ -13,7 +13,6 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
   initialize: function (options) {
     this.router = options.router;
     this.$el = options.$navEl;
-    // this.listenTo(this.router, 'route', this.handleRoute);
     this.listenTo(TenGigg.categories, 'sync', this.render);
   },
 
@@ -52,10 +51,5 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
       }.bind(this)
     });
   },
-
-  // handleRoute: function (routeName, params) {
-  //   this.$el.find('.active').removeClass('active');
-  //   this.$el.find('.' + routeName).addClass('active');
-  // }
 
 });

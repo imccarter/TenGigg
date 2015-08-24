@@ -7,7 +7,7 @@ TenGigg.Views.PostIndexItem = Backbone.View.extend({
 
   events: {
     "click .upvote": "toggleVote",
-    "click .downvote": "toggleVote",
+    "click .downvote": "toggleVote"
   },
 
   initialize: function () {

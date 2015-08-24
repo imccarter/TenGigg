@@ -1,5 +1,6 @@
 class Api::PostsController < ApplicationController
-
+	before_action :require_log_in, only: [:create, :user_posts]
+	
   def index
     if params[:category]
       category = Category.includes(:posts).find_by(name: params[:category])
@@ -8,37 +9,11 @@ class Api::PostsController < ApplicationController
       else
         render json: ["category does not exist"], status: 422
       end
-
-    # elsif params[:user_id]
-    #   user = User.includes(:posts).find(params[:user_id])
-    #   if user
-    #     case params[:posts]
-    #     when "authored"
-    #       @posts = user.posts
-    #     when "commented"
-    #       @posts = user.commented_posts
-    #     when "all"
-    #       @posts = user.all_posts
-    #     end
-    #   else
-    #     render json: ["could not find user"], status: 422
-    #   end
     else
       @posts = Post.all
     end
-    #
-    # if params[:recent]
-    #   @posts = @posts.order(created_at: :desc)
-    # else
-    #   @posts = @posts.includes(:votes).sort { |p| 0 - p.score }
-    # end
     @posts = @posts.page(params[:page]).per(5)
     render :index
-# 		render json: {
-# 			models: @posts,
-# 			page: params[:page],
-# 			total_pages: @posts.total_pages
-# 		}
   end
 
   def user_posts

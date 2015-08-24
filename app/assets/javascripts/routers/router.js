@@ -10,11 +10,11 @@ TenGigg.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-  	"(:page)": "index",
     ":category/posts": "category",
     "profile(/:posts)": "profile",
     "posts/:id": "postShow",
-    "users/:id(/:posts)": "userShow"
+    "users/:id(/:posts)": "userShow",
+    "(:page)": "index"
   },
 
   index: function (page) {
