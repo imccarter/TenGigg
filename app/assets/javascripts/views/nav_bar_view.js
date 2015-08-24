@@ -18,10 +18,12 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
 
   indexHandler: function () {
     this.collection.reOrder('score');
+    $(document).scrollTop(0);
   },
 
   recentHandler: function () {
     this.collection.reOrder('created_at');
+    $(document).scrollTop(0);
   },
 
   composePost: function () {
