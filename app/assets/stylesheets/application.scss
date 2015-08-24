@@ -47,7 +47,7 @@ a {
   color: white;
 }
 
-.navbar-inverse .navbar-nav > li > :not(btn) {
+.navbar-inverse .navbar-nav > li > :not(btn):not(.please-log-in) {
   border-right: 1px solid #625D5D;
 }
 
@@ -63,6 +63,14 @@ a {
 
 .dropdown-item {
   height: 30px;
+}
+
+div.please-log-in {
+	color: #FE2E64;
+	font-size: 12px;
+	text-align: center;
+	padding-top: 17px;
+	padding-right: 10px;
 }
 
 .dropdown-menu > li > a {
