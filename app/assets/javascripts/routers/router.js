@@ -10,10 +10,11 @@ TenGigg.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    ":category/posts": "category",
     "profile(/:posts)": "profile",
     "posts/:id": "postShow",
     "users/:id(/:posts)": "userShow",
+    "recent/posts": "recent",
+    ":category/posts": "category",
     "(:page)": "index"
   },
 
@@ -32,6 +33,21 @@ TenGigg.Routers.Router = Backbone.Router.extend({
     var indexView = new TenGigg.Views.PostsIndex({
       collection: this.collection
     });
+    this._swapView(indexView);
+  },
+  
+  recent: function (page) {
+  	if (!page) {
+  		page = 1;
+  	}
+    this.headerView && this.headerView.remove();
+    this.collection.fetch({
+    	data: { page: page },
+      success: function () {
+      	this.collection.reOrder('created_at');
+      }.bind(this)
+    });
+    var indexView = new TenGigg.Views.PostsIndex({ collection: this.collection });
     this._swapView(indexView);
   },
 

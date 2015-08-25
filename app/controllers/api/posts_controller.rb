@@ -9,6 +9,8 @@ class Api::PostsController < ApplicationController
       else
         render json: ["category does not exist"], status: 422
       end
+    elsif params[:recent]
+    	@posts = Post.all.sort_by &:created_at
     else
       @posts = Post.all
     end

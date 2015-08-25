@@ -5,7 +5,7 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
 
   events: {
     'click .sign-out': 'logOut',
-    'click .recent': 'recentHandler',
+//     'click .recent': 'recentHandler',
     'click .navbar-brand': 'indexHandler',
     'click #compose': 'composePost',
   },
@@ -49,7 +49,6 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
         window.TenGigg.CURRENT_USER.username = "Account";
         this.render();
         window.location.replace('/');
-        // Backbone.history.navigate('#', { trigger: true });
       }.bind(this)
     });
   },
