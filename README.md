@@ -2,24 +2,21 @@
 
 [Heroku link][heroku]
 
-[heroku]: https://tengigg.herokuapp.com/
+[heroku]: http://tengigg.herokuapp.com/
 
 ## Minimum Viable Product
 TenGigg is a social image and gif sharing site inspired by 9gag. Users can:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
-- [ ] Create accounts
-- [ ] Create sessions (log in)
-- [ ] View a feed of the most recent posts sorted by popularity or category
-- [ ] Post content: an image or gif with a title and 1-3 categories
-- [ ] Comment on posts
-- [ ] Comment on comments
-- [ ] Upvote or downvote posts
-- [ ] Upvote or downvote comments
-- [ ] View their account profile
-- [ ] View a feed of posts that they've posted, commented on, or upvoted
-- [ ] Search for posts by title
+- [x] Create accounts
+- [x] Create sessions (log in)
+- [x] View a feed of the most recent posts sorted by popularity or category
+- [x] Post content: an image or gif with a title and 1-3 categories
+- [x] Comment on posts
+- [x] Upvote or downvote posts
+- [x] View their account profile
+- [x] View a feed of posts that they've posted or commented on
 
 ## Design Docs
 * [View Wireframes][views]
@@ -74,6 +71,9 @@ filtered by search criteria.
 [Details][phase-five]
 
 ### Bonus Features (TBD)
+- [ ] Comment on comments
+- [ ] Upvote or downvote comments
+- [ ] Search for posts by title
 - [ ] View other account profiles
 - [ ] Infinite scroll
 - [ ] Video posts
