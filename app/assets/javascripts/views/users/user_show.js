@@ -4,7 +4,7 @@ TenGigg.Views.UserShow = Backbone.CompositeView.extend({
 
   initialize: function () {
 		this.addPostViews();
-    this.listenTo(this.collection, 'all', this.render);//sync update reset
+    this.listenTo(this.collection, 'sync update reset', this.render);
     this.listenTo(this.collection, 'add', this.addPostView);
     this.listenTo(this.collection, 'remove', this.removePostView);
   },

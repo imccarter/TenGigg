@@ -34,6 +34,11 @@ TenGigg.Views.PostIndexItem = Backbone.View.extend({
   },
 
   toggleVote: function (e) {
+  	this.$('.vote-error').empty();
+  	if (!TenGigg.CURRENT_USER.id) {
+  		this.$('.vote-error').append("You need to log in to vote!");
+  		return;
+  	}
     var score;
     if ($(e.currentTarget).attr('name') === 'upvote') {
       score = 1;
@@ -44,7 +49,6 @@ TenGigg.Views.PostIndexItem = Backbone.View.extend({
       if (this.model.vote().get('vote_score') != score) {
         this.updateVote(score);
       } else {
-        //do nothing
       }
     } else {
       this.handleVote(score);

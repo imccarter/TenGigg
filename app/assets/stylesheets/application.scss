@@ -199,6 +199,11 @@ div.page-buttons .next {
 	float: right;
 }
 
+div.vote-error {
+	font-weight: bold;
+	padding-top: 5px;
+}
+
 //THUMB INDEX/SIDEBAR
 
 ul.post-thumbs {
@@ -321,6 +326,11 @@ li.comment {
 .comment-author {
   font-size: 14px;
   color: #0009BA;
+}
+
+.comment-error {
+	font-weight: bold;
+	padding-top: 5px;
 }
 
 // USER PROFILE

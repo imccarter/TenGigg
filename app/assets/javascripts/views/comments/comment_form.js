@@ -27,6 +27,10 @@ TenGigg.Views.CommentForm = Backbone.View.extend({
 	},
 
 	addComment: function (e) {
+		this.$('.comment-error').empty();
+  	if (!TenGigg.CURRENT_USER.id) {
+  		this.$('.comment-error').append("You need to log in to comment!");
+  	}
 		e.preventDefault();
 		var data = $(e.currentTarget).serializeJSON();
 		this.model.set(data);
@@ -42,6 +46,9 @@ TenGigg.Views.CommentForm = Backbone.View.extend({
 				});
 				this.collection.add(this.model);
 			}.bind(this),
+			error: function (XHR, response) {
+				this.$('.comment-error').append(response.responseJSON.join(", "));
+			}
 		});
 	}
 });
