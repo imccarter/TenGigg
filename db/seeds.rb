@@ -321,7 +321,7 @@ comment11 = Comment.create(author_id: 3,
 	commentable_id: 8, commentable_type: "Post"
 )
 
-comment12 = Comment.create(author_id: 3,
+comment12 = Comment.create(author_id: 4,
 	body: "Generic defensive reply",
 	commentable_id: 8, commentable_type: "Post"
 )
