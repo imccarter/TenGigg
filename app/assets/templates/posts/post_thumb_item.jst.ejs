@@ -1,4 +1,4 @@
 <a href="#posts/<%= post.escape("id") %>" class="thumb-post-anchor">
-  <img src="<%= post.image().escape('thumbnail_url') %>" class="thumb-image"/>
-  <h5 class="thumb-post-title"><%= post.escape('title') %></h5>
+	<div class="thumb-img-container"><img src="<%= post.image().escape('thumbnail_url') %>" class="thumb-image"/></div>
+	<div class="thumb-title-container"><span class="thumb-post-title"><%= post.escape('title') %></span></div>
 </a>

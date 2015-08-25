@@ -136,6 +136,10 @@ div#notice {
 
 //MAIN INDEX
 
+.post-show {
+	min-width: 500px;
+}
+
 .post-index {
 	margin-left: 30px;
 	padding-top: 30px;
@@ -199,12 +203,16 @@ div.page-buttons .next {
 
 ul.post-thumbs {
 	padding-top: 70px;
-	position: relative;
 }
 
 li.post-thumb-item {
 	border-bottom: 1px solid #D8D8D8;
 	max-width: 350px;
+	min-height: 120px;
+}
+
+.thumb-img-container {
+	float: left;
 }
 
 .thumb-image {
@@ -212,9 +220,14 @@ li.post-thumb-item {
 	display: inline-block;
 }
 
+.thumb-title-container {
+	min-height: 120px;
+	padding-top: 6px;
+}
+
 .thumb-post-title {
 	font-weight: bold;
-	display: inline-block;
+	font-size: 13px;
 }
 
 .thumb-post-anchor:hover {
