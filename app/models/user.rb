@@ -67,7 +67,10 @@ class User < ActiveRecord::Base
 	end
 
 	def upvoted_posts
-		voted_posts.where("posts.votes.vote_score > 0") #Not working yet...
+		upvoted_posts = votes.select do |vote|
+			vote.user.id = id && vote.vote_score > 0
+		end.map { |vote| vote.post }
+		upvoted_posts
 	end
 
 	def all_posts

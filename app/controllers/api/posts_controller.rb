@@ -37,7 +37,7 @@ class Api::PostsController < ApplicationController
     when "commented"
       @posts = user.commented_posts
 		when "voted"
-			@posts = user.voted_posts # Change to upvoted posts when that works in the user model
+			@posts = user.upvoted_posts # Change to upvoted posts when that works in the user model
     else
       @posts = user.all_posts
     end

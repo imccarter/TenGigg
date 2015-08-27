@@ -35,7 +35,7 @@ class Post < ActiveRecord::Base
   private
   def up_to_three_categories
     if self.categories.length > 3
-      errors.add(:categories, "You can only select up to three categories.")
+      errors.add(:categories, "You may select up to three categories.")
     end
   end
 end
