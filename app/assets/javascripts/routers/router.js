@@ -25,11 +25,8 @@ TenGigg.Routers.Router = Backbone.Router.extend({
   	}
     this.headerView && this.headerView.remove();
     this.collection.fetch({
-    	// remove: false,
-    	data: { page: page}, // sort: '-score' ??
-    	success: function () {
-    		this.collection.reOrder('score');
-    	}.bind(this)
+    	// remove: false, //consider for infinite scroll pagination...
+    	data: { page: page},
     });
     var indexView = new TenGigg.Views.PostsIndex({
       collection: this.collection

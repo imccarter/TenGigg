@@ -99,7 +99,7 @@ div.please-log-in {
   height: 270px;
 	min-height: auto;
   border-radius: 10%;
-  margin: 30px;
+  margin: 130px;
   padding-left: 15px;
   padding-right: 15px;
   background-color: rgba(0,0,0,0.6);
@@ -112,6 +112,8 @@ div.full-page {
   width: 100%;
   background-image: url(http://res.cloudinary.com/dwds5fsan/image/upload/v1440300800/o-GREAT-GATSBY-TRAILER-facebook-1_aec9ie.jpg);
   background-color: black;
+	background-repeat: no-repeat;
+  background-position: center center;
 }
 
 div#notice {
@@ -341,7 +343,7 @@ li.comment {
   text-align: center;
   color: white;
 	padding-top: 45px;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 #section-nav {

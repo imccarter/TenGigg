@@ -12,14 +12,10 @@ class Api::PostsController < ApplicationController
     elsif params[:recent]
     	@posts = Post.all.sort_by &:created_at
     else
-      @posts = Post.all
+      @posts = Post.all.sort_by { |post| - post.score }
     end
-		# Post.all.sort_by(&:score)
-		# if params[:sort]
-			# @posts = Post.order("score DESC")
-			# @posts = @posts.sort_by &:score
-		# end
-    @posts = @posts.page(params[:page]).per(5) #Seems like I'm setting this to an array rather than an AR Relation
+		@posts = Kaminari.paginate_array(@posts)
+    @posts = @posts.page(params[:page]).per(5)
     render :index
   end
 
@@ -41,7 +37,7 @@ class Api::PostsController < ApplicationController
     when "commented"
       @posts = user.commented_posts
 		when "voted"
-			@posts = user.voted_posts #Change to upvoted posts when that works in the user model
+			@posts = user.voted_posts # Change to upvoted posts when that works in the user model
     else
       @posts = user.all_posts
     end
