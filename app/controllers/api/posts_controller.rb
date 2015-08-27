@@ -1,6 +1,6 @@
 class Api::PostsController < ApplicationController
 	before_action :require_log_in, only: [:create, :user_posts]
-	
+
   def index
     if params[:category]
       category = Category.includes(:posts).find_by(name: params[:category])
@@ -14,7 +14,12 @@ class Api::PostsController < ApplicationController
     else
       @posts = Post.all
     end
-    @posts = @posts.page(params[:page]).per(5)
+		# Post.all.sort_by(&:score)
+		# if params[:sort]
+			# @posts = Post.order("score DESC")
+			# @posts = @posts.sort_by &:score
+		# end
+    @posts = @posts.page(params[:page]).per(5) #Seems like I'm setting this to an array rather than an AR Relation
     render :index
   end
 
@@ -35,6 +40,8 @@ class Api::PostsController < ApplicationController
       @posts = user.posts
     when "commented"
       @posts = user.commented_posts
+		when "voted"
+			@posts = user.voted_posts #Change to upvoted posts when that works in the user model
     else
       @posts = user.all_posts
     end

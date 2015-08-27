@@ -7,6 +7,7 @@ TenGigg.Routers.Router = Backbone.Router.extend({
     this.$sideEl = options.$sideEl;
     this.$indexEl = options.$indexEl;
     this.collection = options.posts;
+    this.collection.reOrder('score');
   },
 
   routes: {
@@ -19,15 +20,15 @@ TenGigg.Routers.Router = Backbone.Router.extend({
   },
 
   index: function (page) {
-  	if (!page) {
+  	if (!page) { //this here to set non-paged index to page 1...
   		page = 1;
   	}
     this.headerView && this.headerView.remove();
     this.collection.fetch({
-//     	remove: false,
-    	data: { page: page },
-    	success: function () { 
-    		this.collection.reOrder('score'); //fix to order by score on each page
+    	// remove: false,
+    	data: { page: page}, // sort: '-score' ??
+    	success: function () {
+    		this.collection.reOrder('score');
     	}.bind(this)
     });
     var indexView = new TenGigg.Views.PostsIndex({
@@ -35,7 +36,7 @@ TenGigg.Routers.Router = Backbone.Router.extend({
     });
     this._swapView(indexView);
   },
-  
+
   recent: function (page) {
   	if (!page) {
   		page = 1;
@@ -86,7 +87,7 @@ TenGigg.Routers.Router = Backbone.Router.extend({
       collection: posts,
       comments: comments
     });
-    
+
     this._currentView && this._currentView.remove();
 
     this.$indexEl.html(showView.$el);

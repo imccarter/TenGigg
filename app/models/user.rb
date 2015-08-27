@@ -66,6 +66,10 @@ class User < ActiveRecord::Base
 		self.session_token
 	end
 
+	def upvoted_posts
+		voted_posts.where("posts.votes.vote_score > 0") #Not working yet...
+	end
+
 	def all_posts
 		posts + commented_posts.where("posts.author_id != ?", id)
 	end
