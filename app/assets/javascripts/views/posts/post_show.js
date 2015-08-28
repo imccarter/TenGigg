@@ -105,13 +105,10 @@ TenGigg.Views.PostShow = Backbone.CompositeView.extend({
   },
 
   updateVote: function (score) {
-
     var that = this;
-    this.model.vote().save({
-      vote_score: score
-    }, {
-      success: function () {
-        that.model.setScore(that.model.score() + (score * 2));
+    this.model.vote().save({ vote_score: score }, 
+    { success: function () {
+        that.model.set('score', that.model.get('score') + (score * 2));
       }
     });
   }
