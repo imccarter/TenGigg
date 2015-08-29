@@ -1,12 +1,12 @@
 <br><br>
 <div id='user-splash' class="col-md-12">
-  <% if (user.image().isNew()) { %>
-    <img src="http://res.cloudinary.com/dwds5fsan/image/upload/w_150,h_150,c_fill/v1440028989/default_dqhmax.png" alt="" />
-  <% } else { %>
-    <img src="<%= user.image().escape('url') %>" alt="" />
-  <% } %>
+
+  <img src="<%= user.image().escape('url') %>" alt="" />
+
   <h1><%= user.escape('username') %></h1>
-  <button id="profile" type="button" class="btn btn-info">Edit Profile</button>
+  <% if (user.id == TenGigg.CURRENT_USER.id) { %>
+    <button id="profile" type="button" class="btn btn-info">Edit Profile</button>
+  <% } %>
 </div>
 <div id='section-nav' class="col-md-12">
   <div class="col-md-2"></div>
@@ -14,12 +14,17 @@
   <div class="col-md-6">
     <nav class='navbar nav'>
       <ul class='nav navbar-nav'>
-
-        <li><a class='filter' href="#/profile">Overview</a></li>
-        <li><a class='filter' href="#/profile/authored">Posts</a></li>
-        <li><a class='filter' href="#/profile/commented">Commented</a></li>
-        <li><a class='filter' href="#/profile/voted">Upvoted</a></li>
-
+        <% if (user.id == TenGigg.CURRENT_USER.id) { %>
+          <li><a class='filter' href="#/profile">Overview</a></li>
+          <li><a class='filter' href="#/profile/authored">Posts</a></li>
+          <li><a class='filter' href="#/profile/commented">Commented</a></li>
+          <li><a class='filter' href="#/profile/upvoted">Upvoted</a></li>
+        <% } else { %>
+          <li><a class='filter' href="#/users/<%= user.id %>">Overview</a></li>
+          <li><a class='filter' href="#/users/<%= user.id %>/authored">Posts</a></li>
+          <li><a class='filter' href="#/users/<%= user.id %>/commented">Commented</a></li>
+          <li><a class='filter' href="#/users/<%= user.id %>/upvoted">Upvoted</a></li>
+        <% } %>
       </ul>
     </nav>
   </div>

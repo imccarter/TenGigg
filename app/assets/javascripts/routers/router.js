@@ -65,7 +65,7 @@ TenGigg.Routers.Router = Backbone.Router.extend({
   },
 
   userShow: function (id, postsType) {
-    var user = TenGigg.users.getOrFetch(window.TenGigg.CURRENT_USER.id);
+    var user = TenGigg.users.getOrFetch(id);
 
     var comments = user.comments();
     var posts = new TenGigg.Collections.Posts();

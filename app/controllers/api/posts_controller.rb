@@ -36,7 +36,7 @@ class Api::PostsController < ApplicationController
       @posts = user.posts
     when "commented"
       @posts = user.commented_posts
-		when "voted"
+		when "upvoted"
 			@posts = user.upvoted_posts
     else
       @posts = user.all_posts

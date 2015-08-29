@@ -184,83 +184,83 @@ motivational = Image.create(
 
 ##################POSTS
 
-post1 = Post.create(title: "Here's an adorable puppy you can stare at so you don't have to think about the triviality of your contribution to society", 
+post1 = Post.create(title: "Here's an adorable puppy you can stare at so you don't have to think about the triviality of your contribution to society",
 	author_id: 1, image: puppy, image_id: puppy.id,
   categories: [Category.find(5)]
 )
 
-post2 = Post.create(title: "Let's all just upvote this photo of a kitten that I just googled so I can sleep easy knowing that I have plenty of internet points", 
+post2 = Post.create(title: "Let's all just upvote this photo of a kitten that I just googled so I can sleep easy knowing that I have plenty of internet points",
 	author_id: 4, image: kitten, image_id: kitten.id,
   categories: [Category.find(5)]
 )
 
-post3 = Post.create(title: "This animal's uniqueness is only enhanced by the dearth of any real wildlife in my immediate vicinity!", 
+post3 = Post.create(title: "This animal's uniqueness is only enhanced by the dearth of any real wildlife in my immediate vicinity!",
 	author_id: 4, image: tenerec, image_id: tenerec.id,
   categories: [Category.find(5), Category.find(4), Category.find(2)]
 )
 
-post4 = Post.create(title: "Raising awareness is a crucial part of any conservation effort", 
+post4 = Post.create(title: "Raising awareness is a crucial part of any conservation effort",
 	author_id: 4, image: condor, image_id: condor.id,
   categories: [Category.find(2), Category.find(4), Category.find(6)]
 )
 
-post5 = Post.create(title: "Charismatic megafauna always get the upvotes.", 
+post5 = Post.create(title: "Charismatic megafauna always get the upvotes.",
 	author_id: 5, image: sloth, image_id: sloth.id,
   categories: [Category.find(1), Category.find(5), Category.find(6)]
 )
 
-post6 = Post.create(title: "My studies confirm that users desire short loops of silent low-quality video featuring animals acting silly.", 
+post6 = Post.create(title: "My studies confirm that users desire short loops of silent low-quality video featuring animals acting silly.",
 	author_id: 6, image: dog_gif, image_id: dog_gif.id,
   categories: [Category.find(1), Category.find(5)]
 )
 
-post7 = Post.create(title: "This joke features references to media that this userbase is fond of.", 
+post7 = Post.create(title: "This joke features references to media that this userbase is fond of.",
 	author_id: 7, image: harry_force, image_id: harry_force.id,
   categories: [Category.find(1), Category.find(2)]
 )
 
-post8 = Post.create(title: "Please support your internet community's artists!", 
+post8 = Post.create(title: "Please support your internet community's artists!",
 	author_id: 4, image: unicorn_art, image_id: unicorn_art.id,
   categories: [Category.find(3), Category.find(6)]
 )
 
-post9 = Post.create(title: "The voices in your head are actually useful here.", 
+post9 = Post.create(title: "The voices in your head are actually useful here.",
 	author_id: 5, image: office_gif, image_id: office_gif.id,
   categories: [Category.find(1), Category.find(2)]
 )
 
-post10 = Post.create(title: "I don't know why I posted this here... Move along...", 
+post10 = Post.create(title: "I don't know why I posted this here... Move along...",
 	author_id: 3, image: cezanne, image_id: cezanne.id,
   categories: [Category.find(3)]
 )
 
-post11 = Post.create(title: "You're less likely to feel your life slipping between your fingers if you think you've learned something", 
+post11 = Post.create(title: "You're less likely to feel your life slipping between your fingers if you think you've learned something",
 	author_id: 6, image: infograph, image_id: infograph.id,
   categories: [Category.find(2), Category.find(4)]
 )
 
-post12 = Post.create(title: "There's no way that bemoaning a minor grievance common to most people in a developed nation can get downvoted on the internet!", 
+post12 = Post.create(title: "There's no way that bemoaning a minor grievance common to most people in a developed nation can get downvoted on the internet!",
 	author_id: 7, image: first_world_meme, image_id: first_world_meme.id,
   categories: [Category.find(1)]
 )
 
-post13 = Post.create(title: "Stare long enough and you might forget that you're just wasting time", 
+post13 = Post.create(title: "Stare long enough and you might forget that you're just wasting time",
 	author_id: 5, image: earth_porn1, image_id: earth_porn1.id,
   categories: [Category.find(3), Category.find(6)]
 )
 
-post14 = Post.create(title: "Maybe one day I'll travel there. Probably not, though.", 
+post14 = Post.create(title: "Maybe one day I'll travel there. Probably not, though.",
 	author_id: 3, image: earth_porn2, image_id: earth_porn2.id,
   categories: [Category.find(3), Category.find(6)]
 )
 
-post15 = Post.create(title: "It carries more meaning because a famous person said it", 
+post15 = Post.create(title: "It carries more meaning because a famous person said it",
 	author_id: 5, image: bill_gates, image_id: bill_gates.id,
   categories: [Category.find(4), Category.find(6)]
 )
 
-post16 = Post.create(title: "Believe it!", 
-	author_id: 6, image: motivational, image_id: motivational.id,
+post16 = Post.create(title: "Believe it!",
+	author_id: 2, image: motivational, image_id: motivational.id,
   categories: [Category.find(1), Category.find(4)]
 )
 
@@ -357,7 +357,7 @@ comment18 = Comment.create(author_id: 3,
 )
 
 comment19 = Comment.create(author_id: 7,
-	body: "So if I'm lazy, I'll get rich? I can live with that.",
+	body: "So laziness = money?",
 	commentable_id: 15, commentable_type: "Post"
 )
 
@@ -372,15 +372,15 @@ vote_2 = Vote.create(
 )
 
 vote_3 = Vote.create(
-	user_id: 3, post_id: 2, vote_score: 1
+	user_id: 3, post_id: 1, vote_score: 1
 )
 
 vote_4 = Vote.create(
-	user_id: 4, post_id: 2, vote_score: 1
+	user_id: 4, post_id: 1, vote_score: 1
 )
 
 vote_5 = Vote.create(
-	user_id: 5, post_id: 2, vote_score: 1
+	user_id: 5, post_id: 1, vote_score: 1
 )
 
 vote_6 = Vote.create(
@@ -396,7 +396,7 @@ vote_8 = Vote.create(
 )
 
 vote_9 = Vote.create(
-	user_id: 5, post_id: 5, vote_score: 1
+	user_id: 5, post_id: 5, vote_score: -1
 )
 
 vote_10 = Vote.create(
@@ -424,7 +424,7 @@ vote_15 = Vote.create(
 )
 
 vote_16 = Vote.create(
-	user_id: 7, post_id: 7, vote_score: 1
+	user_id: 7, post_id: 6, vote_score: -1
 )
 
 vote_17 = Vote.create(
@@ -500,7 +500,22 @@ vote_34 = Vote.create(
 )
 
 vote_35 = Vote.create(
-	user_id: 5, post_id: 16, vote_score: 1
+	user_id: 7, post_id: 16, vote_score: 1
+)
+
+# Extra guest seeds:
+
+guest_comment = Comment.create(author_id: 2,
+	body: "No?",
+	commentable_id: 9, commentable_type: "Post"
+)
+
+guest_vote_1 = Vote.create(
+	user_id: 2, post_id: 1, vote_score: 1
+)
+
+guest_vote_2 = Vote.create(
+	user_id: 2, post_id: 16, vote_score: 1
 )
 
 # image1 = Image.create(
@@ -534,54 +549,53 @@ vote_35 = Vote.create(
 # ~20 posts
 # 0-4 comments per post
 # Posts:
-# 
+#
 # Animals:
 # Cute puppy: Here's an adorable puppy you can stare at so you don't have to think about
 # the triviality of your contribution to society.
-# 
+#
 # Cute kitten: Let's all just upvote this photo of a kitten that I just googled so I can
 # rest easy knowing that I have more internet points than you.
-# 
-# Weird animal: This animal is so interesting to me because any wildlife in my immediate 
+#
+# Weird animal: This animal is so interesting to me because any wildlife in my immediate
 # vicinity has been ravished by decades of human negligence.
-# 
+#
 # Endangered animal: Rather than actually trying to do something about it, I'm going
 # to feel better about myself by "raising awareness" about this poor animal's plight.
-# 
+#
 # Sloth (thumbs upping?): Charismatic megafauna always get the upvotes.
-# 
+#
 # Funny gif: My studies confirm that users desire short loops of silent low-quality
 # video of animals acting silly.
-# 
+#
 # Media:
 # GoT meme: Apparently the target demographic of this website universally enjoys this
 # television program. **Skip?**
-# 
-# Use the force, Harry: Here is an in-joke with references to media that this userbase is 
+#
+# Use the force, Harry: Here is an in-joke with references to media that this userbase is
 # fond of.
-# 
+#
 # Poorly made fan-art: Hey everyone, I'm an artist! I'm going to publicly display my work
 # and then get really defensive when someone inevitably insults it!
-# 
+#
 # Office-gif with subtitles: Because your mind can fill in the voices for you.
-# 
+#
 # Misc:
 # Renaissance painting: I don't know why I posted this here. Move along.
-# 
-# Infographic: If you think you've learned something, you'll feel less like you're letting 
+#
+# Infographic: If you think you've learned something, you'll feel less like you're letting
 # your life slip between your fingers as you waste countless hours browsing the internet.
-# 
-# First-world-problem: There's no way that bemoaning a minor grievance common to most people 
+#
+# First-world-problem: There's no way that bemoaning a minor grievance common to most people
 # in a developed nation can get downvoted on the internet!
-# 
+#
 # earth-porn: Maybe if you stare long enough without blinking you can trick your brain into
 # thinking that you're physically there and doing something with your life.
-# 
+#
 # Motivational image: Well, this just seems counterintuitive to post if we want people
 # to actually stay on this site.
-# 
+#
 # Inspirational quote: Because someone famous said it, it carries more meaning.
 #
 # Stick-figure gif: How long do people spend making these animations with the only obvious
 # gain of stoking their internet ego?
-

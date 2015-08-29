@@ -5,7 +5,6 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
 
   events: {
     'click .sign-out': 'logOut',
-//     'click .recent': 'recentHandler',
     'click .navbar-brand': 'indexHandler',
     'click #compose': 'composePost',
   },

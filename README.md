@@ -4,6 +4,12 @@
 
 [heroku]: http://tengigg.herokuapp.com/
 
+##Technologies
+- Single page Backbone app utilizing a RESTful Rails architecture.
+- Image join table that resizes images appropriately given their context.
+- CompositeView class to prevent memory leaks and dynamically update collections.
+- Custom authentication with BCrypt overrides User#password with a salted hash.
+
 ## Minimum Viable Product
 TenGigg is a social image and gif sharing site inspired by 9gag. Users can:
 
@@ -11,12 +17,12 @@ TenGigg is a social image and gif sharing site inspired by 9gag. Users can:
 
 - [x] Create accounts
 - [x] Create sessions (log in)
-- [x] View a feed of the most recent posts sorted by popularity or category
+- [x] View a feed of the posts sorted by vote score or category
 - [x] Post content: an image or gif with a title and 1-3 categories
 - [x] Comment on posts
 - [x] Upvote or downvote posts
 - [x] View their account profile
-- [x] View a feed of posts that they've posted or commented on
+- [x] View a feed of posts that they've posted, commented on, or upvoted.
 
 ## Design Docs
 * [View Wireframes][views]
@@ -39,23 +45,22 @@ a full-size image, popularity and comment stats, but no comments visible.
 ### Phase 2: Make New Posts, Categories (~2 days)
 Registered users can add new posts, selecting up to 2 categories to post to.
 Posts are comprised of a title and a file; a gif, png, or jpeg initially. This file
-will be uploaded via Filepicker. The public main page index can be filtered by category
+will be uploaded via Cloudinary. The public main page index can be filtered by category
 via drop-down menu.
 
 [Details][phase-two]
 
 ### Phase 3: Displaying Single Posts, Comments (~3 days)
 Posts can be clicked on to navigate to the show page. The post will be displayed in
-full-view format, with its comments underneath the post. Comments can have their own
-comments that are nested underneath, and can be expanded and viewed by clicking.
-
+full-view format, with its comments underneath the post. Voting can also be performed
+here.
 [Details][phase-three]
 
 ### Phase 4: Voting on Posts and Comments, Posts Sidebar (~1-2 days)
 Users can upvote or downvote posts and comments, increasing or decreasing the post or
 comment's popularity score. There will be a sidebar with posts displayed in a
 thumb-view format, with just a small image and the title, and possibly also comment
-and popularity stats. Determining what posts show up on sidebar TBD.
+and popularity stats. Sidebar will display a random sample of posts.
 
 
 [Details][phase-four]
@@ -70,9 +75,9 @@ filtered by search criteria.
 
 [Details][phase-five]
 
-### Bonus Features (TBD)
+### Future Additions
 - [ ] Comment on comments
-- [ ] Upvote or downvote comments
+- [ ] Vote on comments
 - [ ] Search for posts by title
 - [ ] View other account profiles
 - [ ] Infinite scroll

@@ -17,8 +17,7 @@ Api::PostsController (create, destroy, show, update)
 
 ### Views
 * PostForm
-* PostsIndex (composite view, contains PostMainView subviews, can be filtered by category)
+* PostsIndex (composite view, contains PostIndexItem subviews, can be filtered by category)
 
 ## Gems/Libraries
-* Filepicker
-* Markdown-js
+* Cloudinary
