@@ -5,7 +5,7 @@
 
   	<h3><%= post.escape('title') %></h3>
   	<div class='post-details'>
-  		Posted by: <%= post.author().escape('username') %>
+  		Posted by: <a class="author" href="#users/<%= post.author().id %>"><%= post.author().escape('username') %></a>
   		<div class="categories">
    			Categories:
     		<% var categories = [] %>

@@ -1,5 +1,5 @@
 class Api::PostsController < ApplicationController
-	before_action :require_log_in, only: [:create, :user_posts]
+	before_action :require_log_in, only: [:create]
 
   def index
     if params[:category]

@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-	before_action :require_log_in, except: [:index]
+	before_action :require_log_in, except: [:index, :show]
 	
 	def show
 		@user = User.find(params[:id])

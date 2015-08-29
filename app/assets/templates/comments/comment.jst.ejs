@@ -2,7 +2,7 @@
   <img src="<%= comment.author().image().escape('thumbnail_url') %>" />
 </div>
 <span class="comment-author">
-  <%= author.escape('username') %>:
+  <a href="#users/<%= author.id %>"><%= author.escape('username') %></a>:
 </span>
 <div class="comment-body">
   <%= comment.escape('body') %>
