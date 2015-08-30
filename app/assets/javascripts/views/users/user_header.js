@@ -8,6 +8,7 @@ TenGigg.Views.UserHeader = Backbone.View.extend({
   },
 
   initialize: function () {
+  	$(document).scrollTop(0);
     this.listenTo(this.model, 'change sync', this.render);
   },
 
