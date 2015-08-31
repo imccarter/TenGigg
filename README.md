@@ -1,8 +1,8 @@
 # TenGigg
 
-[Heroku link][heroku]
+[Live link][link]
 
-[heroku]: http://www.tengigg.xyz/
+[link]: http://www.tengigg.xyz/
 
 ##Technologies
 - Single page Backbone app utilizing a RESTful Rails architecture.
