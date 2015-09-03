@@ -7,12 +7,30 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     'click .sign-out': 'logOut',
     'click .navbar-brand': 'indexHandler',
     'click #compose': 'composePost',
+    'input .search': 'searchHandler',
+    'focus .dropdown-toggle-search': 'preventDefault',
+    'click .dropdown-toggle-search': 'preventDefault'
+
   },
 
   initialize: function (options) {
     this.router = options.router;
     this.$el = options.$navEl;
     this.listenTo(TenGigg.categories, 'sync', this.render);
+    debugger;
+  },
+
+  searchHandler: function (e) {
+    this.searchText = $(e.currentTarget);
+    debugger;
+    var results = this.collection.filter(function (model) {
+      var pattern = new RegExp(this.searchText, "gi");
+      return pattern.test(model.escape("title"));
+    }).bind(this).first(10);
+  },
+
+  preventDefault: function (e) {
+    e.stopPropagation();
   },
 
   indexHandler: function () {

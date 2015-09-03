@@ -20,7 +20,7 @@ window.TenGigg = {
       $headerEl: $('#header'),
       posts: posts
     });
-    
+
     var navbar = new TenGigg.Views.NavBarView({
       router: router,
       $navEl: $('#navbar'),

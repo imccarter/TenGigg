@@ -15,6 +15,7 @@ class Api::PostsController < ApplicationController
       @posts = Post.all.sort_by { |post| - post.score }
     end
 		@posts = Kaminari.paginate_array(@posts)
+		
     @posts = @posts.page(params[:page]).per(5)
     render :index
   end

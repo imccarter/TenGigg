@@ -23,7 +23,17 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
+      <li>
+        <div class="search-div">
+          <a href="#" class="dropdown-toggle-search" data-toggle="dropdown" role="button"
+            aria-haspopup="true" aria-expanded="false">
+            <input type="text" class="search" name="instant-search" placeholder="Search"></a>
 
+            <ul class="dropdown-menu">
+              <!-- Iterate through results, append lis -->
+            </ul>
+        </div>
+      </li>
       <% if (window.TenGigg.CURRENT_USER.username !== "Account") { %>
 
         <!-- Submit Button -->
