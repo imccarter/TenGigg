@@ -17,7 +17,6 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     this.router = options.router;
     this.$el = options.$navEl;
     this.listenTo(TenGigg.categories, 'sync', this.render);
-    debugger;
   },
 
   searchHandler: function (e) {
