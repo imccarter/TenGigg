@@ -15,7 +15,6 @@ class Api::PostsController < ApplicationController
       @posts = Post.all.sort_by { |post| - post.score }
     end
 		@all_posts = @posts
-		Kaminari.paginate_array(@all_posts)
 		@posts = Kaminari.paginate_array(@posts)
     @posts = @posts.page(params[:page]).per(5)
     render :index
@@ -51,6 +50,11 @@ class Api::PostsController < ApplicationController
     @posts = Post.all.sample(10)
     render :index
   end
+
+	def all_posts
+		@posts = Post.all
+		render :index
+	end
 
   def show
     @post = Post.find(params[:id])

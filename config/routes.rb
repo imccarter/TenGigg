@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 		resources :posts, except: [:new, :edit] do
 			get "user_posts", to: "posts#user_posts", on: :collection
 			get "random", to: "posts#random", on: :collection
+			get "all_posts", to: "posts#all_posts", on: :collection
 		end
 		resources :categories, only: :index
 		resources :images, except: [:new, :edit]

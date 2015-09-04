@@ -7,29 +7,46 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     'click .sign-out': 'logOut',
     'click .navbar-brand': 'indexHandler',
     'click #compose': 'composePost',
-    'input .search': 'searchHandler',
-    'focus .dropdown-toggle-search': 'preventDefault',
-    'click .dropdown-toggle-search': 'preventDefault'
-
+    'input .search-input': 'searchHandler',
+    // 'focus .dropdown-toggle-search': 'stopProp',
+    'click .search-anchor': 'stopProp',
+    // 'click .dropdown-toggle-search': 'stopProp',
+    // 'blur .dropdown-toggle-search' : 'stopProp'
   },
 
   initialize: function (options) {
     this.router = options.router;
     this.$el = options.$navEl;
     this.listenTo(TenGigg.categories, 'sync', this.render);
+    this.searchPosts = options.searchPosts;
   },
 
   searchHandler: function (e) {
-    this.searchText = $(e.currentTarget);
-    debugger;
-    var results = this.collection.filter(function (model) {
+    this.searchText = $(e.currentTarget).val();
+
+    $(".insta-search").empty();
+    $(e.currentTarget).parent().attr('aria-expanded', "false");
+
+    var results = this.searchPosts.filter(function (model) {
       var pattern = new RegExp(this.searchText, "gi");
-      return pattern.test(model.escape("title"));
-    }).bind(this).first(10);
+      return pattern.test(model.get("title"));
+    }.bind(this));
+
+    if (results.length > 0) {
+      $(e.currentTarget).parent().attr('aria-expanded', true); //trigger dropdown!
+      debugger;
+      results.splice(0, 10).forEach (function (post) {
+        $(".insta-search").append("<li class='dropdown-item' style='font-size: 8px'>" + post.escape("title") + "</li>");
+      }.bind(this));
+    } else {
+      $(e.currentTarget).parent().attr('aria-expanded', "false");
+    }
   },
 
-  preventDefault: function (e) {
+  stopProp: function (e) {
+    // debugger;
     e.stopPropagation();
+    e.preventDefault();
   },
 
   indexHandler: function () {

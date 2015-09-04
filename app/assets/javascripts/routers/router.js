@@ -26,7 +26,7 @@ TenGigg.Routers.Router = Backbone.Router.extend({
     this.headerView && this.headerView.remove();
     this.collection.fetch({
     	// remove: false, //consider for infinite scroll pagination...
-    	data: { page: page},
+    	data: { page: page }
     });
     var indexView = new TenGigg.Views.PostsIndex({
       collection: this.collection

@@ -14,6 +14,9 @@ window.TenGigg = {
 
     var posts = new TenGigg.Collections.Posts();
 
+    var searchPosts = new TenGigg.Collections.Posts();
+    searchPosts.fetch({ url: '/api/posts/all_posts' });
+
     var router = new TenGigg.Routers.Router({
       $indexEl: $('#index'),
       $sideEl: $('#sidebar'),
@@ -25,6 +28,7 @@ window.TenGigg = {
       router: router,
       $navEl: $('#navbar'),
       collection: posts,
+      searchPosts: searchPosts
     });
 
     var sidePosts = new TenGigg.Collections.Posts();
