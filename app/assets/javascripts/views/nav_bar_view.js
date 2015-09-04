@@ -8,10 +8,8 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     'click .navbar-brand': 'indexHandler',
     'click #compose': 'composePost',
     'input .search-input': 'searchHandler',
-    // 'focus .dropdown-toggle-search': 'stopProp',
+    'focus .dropdown-toggle-search': 'stopProp',
     'click .search-anchor': 'stopProp',
-    // 'click .dropdown-toggle-search': 'stopProp',
-    // 'blur .dropdown-toggle-search' : 'stopProp'
   },
 
   initialize: function (options) {
@@ -33,8 +31,8 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     }.bind(this));
 
     if (results.length > 0) {
-      $(e.currentTarget).parent().attr('aria-expanded', true); //trigger dropdown!
-      debugger;
+      $(e.currentTarget).parent().dropdown('toggle'); //trigger dropdown!
+      $(".search-input").focus(); //NOT QUITE WORKING
       results.splice(0, 10).forEach (function (post) {
         $(".insta-search").append("<li class='dropdown-item' style='font-size: 8px'>" + post.escape("title") + "</li>");
       }.bind(this));
