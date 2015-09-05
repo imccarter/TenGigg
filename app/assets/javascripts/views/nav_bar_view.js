@@ -31,7 +31,7 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     }.bind(this));
 
     if (results.length > 0) {
-      $(e.currentTarget).parent().dropdown('toggle'); //trigger dropdown!
+      $(e.currentTarget).parent().dropdown(' '); //trigger dropdown!
       $(".search-input").focus(); //NOT QUITE WORKING
       results.splice(0, 10).forEach (function (post) {
         $(".insta-search").append("<li class='dropdown-item' style='font-size: 8px'>" + post.escape("title") + "</li>");
