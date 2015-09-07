@@ -48,8 +48,8 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     } else {
     	debugger;
       $(e.currentTarget).parent().attr('aria-expanded', "false");
-      $(e.currentTarget).parent().dropdown('toggle');
-      $(e.currentTarget).parent().removeClass('active');
+//       $(e.currentTarget).parent().dropdown('toggle'); //Still working on it...
+//       $(e.currentTarget).parent().removeClass('active');
     }
   },
   
