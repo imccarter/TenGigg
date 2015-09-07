@@ -9,7 +9,9 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     'click #compose': 'composePost',
     'input .search-input': 'searchHandler',
     'focus .dropdown-toggle-search': 'stopProp',
-    'click .search-anchor': 'stopProp',
+    'blur .search-anchor': 'handleDropdown',
+    'click .search-anchor': 'prevDef',
+    'click .search-anchor': 'stopProp'
   },
 
   initialize: function (options) {
@@ -29,22 +31,42 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
       var pattern = new RegExp(this.searchText, "gi");
       return pattern.test(model.get("title"));
     }.bind(this));
+		$(".search-input").focus();
+    
+    if (!($(e.currentTarget).parent().hasClass('active'))) {
+    	$(".search-input").focus();
+      $(e.currentTarget).parent().dropdown('toggle');
+      $(e.currentTarget).parent().addClass('active');
+    }
+
 
     if (results.length > 0) {
-      $(e.currentTarget).parent().dropdown(' '); //trigger dropdown!
-      $(".search-input").focus(); //NOT QUITE WORKING
+			$(".search-input").focus();
       results.splice(0, 10).forEach (function (post) {
         $(".insta-search").append("<li class='dropdown-item' style='font-size: 8px'>" + post.escape("title") + "</li>");
       }.bind(this));
     } else {
+    	debugger;
       $(e.currentTarget).parent().attr('aria-expanded', "false");
+      $(e.currentTarget).parent().dropdown('toggle');
+      $(e.currentTarget).parent().removeClass('active');
     }
+  },
+  
+  handleDropdown: function (e) { //UNDER CONSTRUCTION...
+//   	debugger;
+//   	$('.search-anchor').dropdown('toggle');
+//   	$('.search-anchor').removeClass('active');
+//   	e.preventDefault();
+//   	e.stopPropagation();
   },
 
   stopProp: function (e) {
-    // debugger;
     e.stopPropagation();
-    e.preventDefault();
+  },
+  
+  prevDef: function (e) {
+  	e.preventDefault();
   },
 
   indexHandler: function () {
