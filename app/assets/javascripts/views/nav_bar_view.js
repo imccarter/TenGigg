@@ -21,7 +21,7 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
 
   goToLink: function (e) {
     console.log('click');
-    $(e.currentTarget).click();
+    Backbone.history.navigate($(e.currentTarget).attr('href'), { trigger: true });
     debugger;
   },
   //search-div > search-anchor > search-input
