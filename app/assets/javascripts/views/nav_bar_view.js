@@ -8,9 +8,9 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     'click .navbar-brand': 'indexHandler',
     'click #compose': 'composePost',
     'input .search-input': 'enterSearchHandler',
-    'blur .search-input': 'hideSearchHandler',
     'click .search-input': 'enterSearchHandler',
-    'click .insta-search': 'goToLink'
+    'blur .search-input': 'delayHide',
+    'mousedown .srch-res': 'goToLink'
     // 'click .search-div': 'enterSearchHandler',
     // 'toggle .insta-search': 'stopProp',
     // 'click .search-anchor': 'prevDef',
@@ -21,6 +21,8 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
 
   goToLink: function (e) {
     console.log('click');
+    $(e.currentTarget).click();
+    debugger;
   },
   //search-div > search-anchor > search-input
 
@@ -31,14 +33,21 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     this.searchPosts = options.searchPosts;
   },
 
+  delayHide: function () {
+    function hideSearchHandler () {
+      $('ul.insta-search').css('display', 'none');
+    }
+    window.setTimeout(hideSearchHandler, 2000);
+  },
+
   hideSearchHandler: function () {
     $('ul.insta-search').css('display', 'none');
   },
 
   enterSearchHandler: function (e) {
     this.searchText = $(e.currentTarget).val();
-    e.stopPropagation();
-    e.preventDefault();
+    // e.stopPropagation();
+    // e.preventDefault();
     $(".insta-search").empty();
     // $(e.currentTarget).parent().attr('aria-expanded', "false");
 
@@ -67,7 +76,7 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
       $('ul.insta-search').css('display', 'block');
 			$(".search-input").focus();
       results.splice(0, 10).forEach (function (post) {
-        $(".insta-search").append("<li class='dropdown-item' style='font-size: 8px'><a href='posts/" + post.escape('id') + "'>" + post.escape("title") + "</a></li>");
+        $(".insta-search").append("<li class='dropdown-item' class='srch-res' style='font-size: 8px'><a href='#posts/" + post.escape('id') + "' class='srch-res'>" + post.escape("title") + "</a></li>");
       }.bind(this));
     } else {
       $('ul.insta-search').css('display', 'none');
