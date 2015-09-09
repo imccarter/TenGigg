@@ -3,12 +3,12 @@
 TenGigg.Views.PostsIndex = Backbone.CompositeView.extend({
   template: JST['posts/main_index'],
   className: 'post-index',
-	
+
 	events: {
 		"click .next-page": "scrollUp",
-    "click .prev-page": "scrollUp"
+    "click .prev-page": "scrollUp",
 	},
-	
+
   initialize: function () {
     this.addPostViews();
     this.listenTo(this.collection, 'sync sort', this.render);
@@ -24,7 +24,7 @@ TenGigg.Views.PostsIndex = Backbone.CompositeView.extend({
     this.attachSubviews();
     return this;
   },
-  
+
   scrollUp: function () {
   	$(document).scrollTop(0);
   },

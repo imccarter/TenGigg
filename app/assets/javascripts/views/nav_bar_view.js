@@ -7,12 +7,22 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     'click .sign-out': 'logOut',
     'click .navbar-brand': 'indexHandler',
     'click #compose': 'composePost',
-    'input .search-input': 'searchHandler',
-    'focus .dropdown-toggle-search': 'stopProp',
-    'blur .search-anchor': 'handleDropdown',
-    'click .search-anchor': 'prevDef',
-    'click .search-anchor': 'stopProp'
+    'input .search-input': 'enterSearchHandler',
+    'blur .search-input': 'hideSearchHandler',
+    'click .search-input': 'enterSearchHandler',
+    'click .insta-search': 'goToLink'
+    // 'click .search-div': 'enterSearchHandler',
+    // 'toggle .insta-search': 'stopProp',
+    // 'click .search-anchor': 'prevDef',
+    // 'click .search-div': 'stopProp',
+    // 'click .search-input': 'stopProp',
+    // 'click' : 'stopPropClick'
   },
+
+  goToLink: function (e) {
+    console.log('click');
+  },
+  //search-div > search-anchor > search-input
 
   initialize: function (options) {
     this.router = options.router;
@@ -21,52 +31,76 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     this.searchPosts = options.searchPosts;
   },
 
-  searchHandler: function (e) {
-    this.searchText = $(e.currentTarget).val();
+  hideSearchHandler: function () {
+    $('ul.insta-search').css('display', 'none');
+  },
 
+  enterSearchHandler: function (e) {
+    this.searchText = $(e.currentTarget).val();
+    e.stopPropagation();
+    e.preventDefault();
     $(".insta-search").empty();
-    $(e.currentTarget).parent().attr('aria-expanded', "false");
+    // $(e.currentTarget).parent().attr('aria-expanded', "false");
 
     var results = this.searchPosts.filter(function (model) {
       var pattern = new RegExp(this.searchText, "gi");
       return pattern.test(model.get("title"));
     }.bind(this));
-		$(".search-input").focus();
-    
+
+		// $(".search-input").focus();
+    if (this.searchText === "") {
+      // $('ul.insta-search').dropdown('toggle');
+      $('ul.insta-search').css('display', 'none');
+      // $(".search-input").focus();
+      $(e.currentTarget).parent().removeClass('active');
+      return;
+    }
+
     if (!($(e.currentTarget).parent().hasClass('active'))) {
-    	$(".search-input").focus();
-      $(e.currentTarget).parent().dropdown('toggle');
+      $('ul.insta-search').dropdown('toggle');
+    	// $(".search-input").focus();
       $(e.currentTarget).parent().addClass('active');
     }
 
 
     if (results.length > 0) {
+      $('ul.insta-search').css('display', 'block');
 			$(".search-input").focus();
       results.splice(0, 10).forEach (function (post) {
-        $(".insta-search").append("<li class='dropdown-item' style='font-size: 8px'>" + post.escape("title") + "</li>");
+        $(".insta-search").append("<li class='dropdown-item' style='font-size: 8px'><a href='posts/" + post.escape('id') + "'>" + post.escape("title") + "</a></li>");
       }.bind(this));
     } else {
-    	debugger;
-      $(e.currentTarget).parent().attr('aria-expanded', "false");
+      $('ul.insta-search').css('display', 'none');
+
+      // $(e.currentTarget).parent().dropdown('toggle');
+      // $(".search-input").focus();
+      // $(e.currentTarget).parent().addClass('active');
+    	// debugger;
+      // $(e.currentTarget).parent().attr('aria-expanded', "false");
 //       $(e.currentTarget).parent().dropdown('toggle'); //Still working on it...
 //       $(e.currentTarget).parent().removeClass('active');
     }
   },
-  
-  handleDropdown: function (e) { //UNDER CONSTRUCTION...
-//   	debugger;
-//   	$('.search-anchor').dropdown('toggle');
+
+  exitSearchHandler: function (e) { //UNDER CONSTRUCTION...
+
+  	// $('.search-anchor').dropdown('toggle');
 //   	$('.search-anchor').removeClass('active');
 //   	e.preventDefault();
 //   	e.stopPropagation();
   },
 
   stopProp: function (e) {
+    console.log("stopProp");
+
     e.stopPropagation();
   },
-  
+
   prevDef: function (e) {
+    console.log("prevDef");
+
   	e.preventDefault();
+    e.stopPropagation();
   },
 
   indexHandler: function () {
