@@ -47,7 +47,7 @@ a {
   color: white;
 }
 
-.navbar-inverse .navbar-nav > li > :not(btn):not(.please-log-in) {
+.navbar-inverse .navbar-nav > li > :not(btn):not(.please-log-in):not(.search-div) {
   border-right: 1px solid #625D5D;
 }
 
@@ -83,9 +83,34 @@ div.please-log-in {
 }
 
 #compose {
-	border: 0;
-  margin-top: 9px;
+  margin-top: 8px;
   margin-right: 8px;
+}
+
+//SEARCH
+
+.glyphicon-search {
+	display: inline-block;
+}
+
+.search-div {
+	vertical-align: middle;
+	padding-top: 8px;
+	padding-right: 20px;
+}
+
+.search-input {
+	vertical-align: middle;
+}
+
+.insta-search {
+	width: 300px;
+}
+
+.srch-res {
+	font-size: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 //AUTH STUFF

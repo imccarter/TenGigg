@@ -503,17 +503,17 @@ vote_35 = Vote.create(
 	user_id: 7, post_id: 16, vote_score: 1
 )
 
+vote_36 = Vote.create(
+	user_id: 6, post_id: 1, vote_score: 1
+)
+
+vote_37 = Vote.create(
+	user_id: 5, post_id: 16, vote_score: 1
+)
+
 # Extra guest seeds:
 
 guest_comment = Comment.create(author_id: 2,
 	body: "No?",
 	commentable_id: 9, commentable_type: "Post"
-)
-
-guest_vote_1 = Vote.create(
-	user_id: 2, post_id: 1, vote_score: 1
-)
-
-guest_vote_2 = Vote.create(
-	user_id: 2, post_id: 16, vote_score: 1
 )
