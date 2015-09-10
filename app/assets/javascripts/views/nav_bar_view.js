@@ -9,7 +9,7 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     'click #compose': 'composePost',
     'input .search-input': 'enterSearchHandler',
     'click .search-input': 'enterSearchHandler',
-    'blur .search-input': 'delayHide',
+    'blur .search-input': 'hideSearchHandler',
     'mousedown .srch-res': 'goToLink'
     // 'click .search-div': 'enterSearchHandler',
     // 'toggle .insta-search': 'stopProp',
@@ -22,7 +22,6 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
   goToLink: function (e) {
     console.log('click');
     Backbone.history.navigate($(e.currentTarget).attr('href'), { trigger: true });
-    debugger;
   },
   //search-div > search-anchor > search-input
 
@@ -33,12 +32,12 @@ TenGigg.Views.NavBarView = Backbone.View.extend({
     this.searchPosts = options.searchPosts;
   },
 
-  delayHide: function () {
-    function hideSearchHandler () {
-      $('ul.insta-search').css('display', 'none');
-    }
-    window.setTimeout(hideSearchHandler, 2000);
-  },
+  // delayHide: function () {
+  //   function hideSearchHandler () {
+  //     $('ul.insta-search').css('display', 'none');
+  //   }
+  //   window.setTimeout(hideSearchHandler, 2000);
+  // },
 
   hideSearchHandler: function () {
     $('ul.insta-search').css('display', 'none');
