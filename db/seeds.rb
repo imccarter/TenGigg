@@ -184,7 +184,7 @@ motivational = Image.create(
 
 ##################POSTS
 
-post1 = Post.create(title: "Here's an adorable puppy you can stare at so you don't have to think about the triviality of your contribution to society",
+post1 = Post.create(title: "This puppy is literally the cutest ever, figuratively speaking",
 	author_id: 1, image: puppy, image_id: puppy.id,
   categories: [Category.find(5)]
 )
