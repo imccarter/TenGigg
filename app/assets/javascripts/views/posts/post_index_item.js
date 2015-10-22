@@ -36,7 +36,9 @@ TenGigg.Views.PostIndexItem = Backbone.View.extend({
   toggleVote: function (e) {
   	this.$('.vote-error').empty();
   	if (!TenGigg.CURRENT_USER.id) {
-  		this.$('.vote-error').append("You need to log in to vote!");
+  		this.$('.vote-error').append("You need to " +
+        "<a href='/session/new' class='log-in-link'>log in</a>" +
+        " to vote!");
   		return;
   	}
     var score;
